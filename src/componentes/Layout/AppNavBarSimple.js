@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
-import BarSession from "./Bar/BarSession";
-import barsesionSimple from "./Bar/BarsesionSimple";
+
+import BarsesionSimple from "./Bar/BarsesionSimple";
 import { withStyles } from "@material-ui/styles";
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import theme from "../theme/theme";
 import { compose, fromRenderProps } from "recompose";
 import { consumerFirebase } from "../../server";
 import { StateContext } from "../../sesion/store";
+//import { Toolbar } from "@material-ui/core";
 
 
 const styles = (theme) => ({
@@ -23,7 +26,7 @@ const styles = (theme) => ({
   },
 });
 
-class AppNavBar extends Component {
+class AppNavBarSimple extends Component {
   static contextType = StateContext;
   state = {
     firebase: null
@@ -59,16 +62,24 @@ class AppNavBar extends Component {
   render() {
     const  [{sesion}, dispatch] = this.context;
     return sesion ? (sesion.autenticado ? (
+        <MuiThemeProvider theme= {theme}>
       <div>
-        <AppBar position="static">
-          <BarSession />
           
-        </AppBar>
+            
+        <AppBar position="static" style={{ background: '#fff' }}>
+        
+            <BarsesionSimple >
+
+            </BarsesionSimple>
+          </AppBar>
+         
+       
       </div>
+      </MuiThemeProvider>
     )
     :null
     ):null;
   }
 }
 
-export default compose(withStyles(styles), consumerFirebase)(AppNavBar);
+export default compose(withStyles(styles), consumerFirebase)(AppNavBarSimple);

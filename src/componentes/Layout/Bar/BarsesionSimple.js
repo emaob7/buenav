@@ -3,9 +3,10 @@ import {
   Toolbar,
   Typography,
   IconButton,
-  Button,
   Drawer,
-  Avatar
+  Avatar,
+  Menu,
+  Container
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { consumerFirebase } from "../../../server";
@@ -17,6 +18,10 @@ import { MenuIzquierda } from "./menuIzquierda";
 import fotoUsuarioTemp from "../../../logo.svg";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
+import BotonInstitucion from "./botones/BotonInstitucion";
+import BotonTransparencia from "./botones/BotonTransparencia";
+import BotonCiudad from "./botones/BotonCiudad";
+import BotonServicios from "./botones/BotonServicios";
 
 
 const styles = (theme) => ({
@@ -25,16 +30,34 @@ const styles = (theme) => ({
     [theme.breakpoints.up("md")]: {
       display: "flex",
     },
+    root: {
+      display: 'flex',
+    },
+    paper: {
+      marginRight: theme.spacing(2),
+    },
+    
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
       display: "none",
+
+    },
+  },
+  sectionMobile1: {
+    display: "flex",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+      flexGrow: 1,
+      marginRight: theme.spacing(2),
+
     },
   },
   grow: {
-    flexGrow: 1,
+    flexGrow: 20,
   },
+ 
   avatarSize: {
     width: 40,
     height: 40,
@@ -51,6 +74,9 @@ const styles = (theme) => ({
 });
 
 class BarSession extends Component {
+
+
+
   static contextType = StateContext;
 
   state = {
@@ -77,7 +103,12 @@ class BarSession extends Component {
       nuevosObjetos.firebase = nextProps.firebase;
     }
     return nuevosObjetos;
+
   }
+  //agregado
+
+
+//agregado2
 
   render() {
     const { classes } = this.props;
@@ -124,27 +155,36 @@ class BarSession extends Component {
           </div>
         </Drawer>
         <Toolbar>
-          <IconButton 
-          color="inherit"
-          onClick={this.toggleDrawer("left",true)}
-          >
+        <IconButton edge="start" className={classes.menuButton}
+          style={{ color: '#757575' }}
+          onClick={this.toggleDrawer("left",true)}>
             <i className="material-icons">menu</i>
           </IconButton>
-          <Typography variant="h6">Places</Typography>
-          <div className={classes.grow}></div>
+          
+        <Typography variant="h6" style={{ color: '#757575' }} >Municipalidad de Buena Vista</Typography>
+        <div className={classes.grow}></div>
+{/**Agregar una imagen cuanse pueda del logo */}
           <div className={classes.sectionDesktop}>
-            <IconButton color="inherit"  component={Link} to="">
-              <i className="material-icons">mail_outline</i>
+{/* seccion para menu listas, Desktop */}
+        <BotonInstitucion/>
+        <BotonTransparencia/>
+        <BotonCiudad/>
+        <BotonServicios/>
+        <IconButton
+              style={{ color: '#757575' }}
+              onClick={this.toggleDrawer("right", true)}
+            >
+              <i className="material-icons">more_vert</i>
             </IconButton>
-            <Button color="inherit" onClick={this.salirSesionApp}>Salir</Button>
-            <Button color="inherit">{textoUsuario}</Button>
-            <Avatar
-            src={usuario.foto || fotoUsuarioTemp}>
-            </Avatar>
           </div>
+
+                 
           <div className={classes.sectionMobile}>
+{/* seccion para menu listas, Mobile */}
+
+
             <IconButton
-              color="inherit"
+              style={{ color: '#757575' }}
               onClick={this.toggleDrawer("right", true)}
             >
               <i className="material-icons">more_vert</i>

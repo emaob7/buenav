@@ -12,16 +12,14 @@ import {
   Card,
   CardContent,
   CardActions,
-  ButtonGroup,
+  ButtonGroup
 } from "@material-ui/core";
-import MuseumIcon from '@material-ui/icons/Museum';
+import MuseumIcon from "@material-ui/icons/Museum";
 import { consumerFirebase } from "../../server";
 import logo from "../../logo.svg";
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 import { obtenerData, obtenerDataAnterior } from "../../sesion/actions/InmuebleAction";
-
-
 
 
 const style = {
@@ -30,13 +28,9 @@ const style = {
     paddingBottom: 8
   },
   paper: {
-    backgroundColor: "#fafafa",
+    backgroundColor: "#f5f5f5",
     padding: "20px",
     minHeight: 650
-  },
-  paper2: {
-    marginRight: "20px"
-  
   },
   link: {
     display: "flex"
@@ -50,19 +44,17 @@ const style = {
     flexDirection: "column"
   },
   cardMedia: {
-    paddingTop: "56.25%",
-    marginRight: 'auto',
+    paddingTop: "56.25%"
   },
   cardContent: {
     flexGrow: 1
   },
   barraBoton: {
-    marginTop: "20px",
-    
+    marginTop: "20px"
   }
 };
 
-class ListaInmuebles extends Component {
+class Noticias extends Component {
   state = {
     inmuebles: [],
     textoBusqueda: "",
@@ -214,18 +206,14 @@ class ListaInmuebles extends Component {
   }
   render() {
     return (
-
       <Container style={style.cardGrid}>
-
-      
-
         <Paper style={style.paper}>
           <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">
-              <Link color="primary" style={style.link} href="/">
-                <MuseumIcon />
-                Municipalidad Buena Vista /
-              </Link>
+            <Link color="Primary" style={style.link} href="/" >
+                                    <MuseumIcon style={style.homeIcon} />
+                                    Municipalidad Buena Vista
+                                </Link>
               
             </Breadcrumbs>
           </Grid>
@@ -299,10 +287,9 @@ class ListaInmuebles extends Component {
             </Grid>
           </Grid>
         </Paper>
-        
       </Container>
     );
   }
 }
 
-export default consumerFirebase(ListaInmuebles);
+export default consumerFirebase(Noticias);

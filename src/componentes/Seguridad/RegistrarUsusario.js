@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import LockOutlineIcon from "@material-ui/icons/LockOutlined";
 import {
-  Typography,
-  Grid,
   Container,
-  Avatar,
+  Typography,
   TextField,
+  Avatar,
+  Grid,
   Button,
 } from "@material-ui/core";
+import LockOutLineIcon from "@material-ui/icons/LockOutlined";
 import { compose } from "recompose";
 import { consumerFirebase } from "../../server";
+import { crearUsuario } from "../../sesion/actions/sesionAction";
+import { openMensajePantalla } from "../../sesion/actions/snackbarAction";
+import { StateContext } from "../../sesion/store";
 
 const style = {
   paper: {
@@ -28,12 +31,20 @@ const style = {
   },
   submit: {
     marginTop: 15,
-    marginBotton: 20,
+    marginBottom: 20,
   },
 };
 
+const usuarioInicial = {
+  nombre: "",
+  apellido: "",
+  email: "",
+  password: "",
+};
 
-class RegistrarUsusario extends Component {
+class RegistrarUsuario extends Component {
+  static contextType = StateContext;
+
   state = {
     firebase: null,
     usuario: {
@@ -48,6 +59,7 @@ class RegistrarUsusario extends Component {
     if (nextProps.firebase === prevState.firebase) {
       return null;
     }
+
     return {
       firebase: nextProps.firebase,
     };
@@ -61,44 +73,32 @@ class RegistrarUsusario extends Component {
     });
   };
 
-  registrarUsuario = (e) => {
+  registrarUsuario = async (e) => {
     e.preventDefault();
-    console.log("Su estado es", this.state.usuario);
-    const { usuario, firebase } = this.state;
+    const [{ sesion }, dispatch] = this.context;
+    const { firebase, usuario } = this.state;
 
-    firebase.auth
-      .createUserWithEmailAndPassword(usuario.email, usuario.password)
-      .then((auth) => {
-        const usuarioDB = {
-          usuarioid: auth.user.uid,
-          email: usuario.email,
-          nombre: usuario.nombre,
-          apellido: usuario.apellido,
-        };
-
-        firebase.db
-          .collection("Users")
-          .add(usuarioDB)
-          .then((usuarioAfter) => {
-            console.log("Esta insercion fue un exito", usuarioAfter);
-            this.props.history.push('/');
-          })
-          .catch((error) => {
-            console.log("error", error);
-          });
+    let callback = await crearUsuario(dispatch, firebase, usuario);
+    if (callback.status) {
+      this.props.history.push("/");
+    } else {
+      openMensajePantalla(dispatch, {
+        open: true,
+        mensaje: callback.mensaje.message,
       });
+    }
   };
+
   render() {
     return (
       <Container maxWidth="md">
         <div style={style.paper}>
           <Avatar style={style.avatar}>
-            <LockOutlineIcon />
+            <LockOutLineIcon />
           </Avatar>
-          <Typography component="h1" variant="h6">
-            Registre su cuenta
+          <Typography component="h1" variant="h5">
+            Registre su Cuenta
           </Typography>
-
           <form style={style.form}>
             <Grid container spacing={2}>
               <Grid item md={6} xs={12}>
@@ -123,23 +123,22 @@ class RegistrarUsusario extends Component {
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
-                  type="mail"
+                  name="email"
                   onChange={this.onChange}
                   value={this.state.usuario.email}
-                  name="email"
                   fullWidth
-                  label="Ingrese su correo"
+                  label="Ingrese su e-mail"
                   variant="outlined"
                 />
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
                   type="password"
+                  name="password"
                   onChange={this.onChange}
                   value={this.state.usuario.password}
-                  name="password"
                   fullWidth
-                  label="Ingrese su clave"
+                  label="Ingrese su password"
                   variant="outlined"
                 />
               </Grid>
@@ -166,4 +165,4 @@ class RegistrarUsusario extends Component {
   }
 }
 
-export default compose(consumerFirebase)(RegistrarUsusario);
+export default compose(consumerFirebase)(RegistrarUsuario);

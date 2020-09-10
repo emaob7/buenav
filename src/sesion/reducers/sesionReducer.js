@@ -13,19 +13,19 @@ export const initialState ={
 
 const sesionReducer = (state= initialState, action) => {
   switch (action.type) {
-    case 'INICIAR_SESION':
+    case "INICIAR_SESION":
       return {
         ...state,
         usuario: action.sesion,
         autenticado: action.autenticado
       };
-    case 'CAMBIAR_SESION':
+    case "CAMBIAR_SESION":
       return {
         ...state,
         usuario: action.nuevoUsuario,
         autenticado: action.autenticado
       };
-      case 'SALIR_SESION':
+      case "SALIR_SESION":
         return {
           ...state,
           usuario: action.nuevoUsuario,

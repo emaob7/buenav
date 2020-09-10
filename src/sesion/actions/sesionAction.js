@@ -32,7 +32,8 @@ export const crearUsuario = (dispatch, firebase, usuario) => {
         firebase.db
         .collection("Users")
         .doc(auth.user.uid)
-        .set({
+        .set(
+          {
             id: auth.user.uid,
             email: usuario.email,
             nombre: usuario.nombre,
