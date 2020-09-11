@@ -88,7 +88,6 @@ function App(props) {
               <Route
               exact
               path="/intendente"
-              autenticadoFirebase="{firebase.auth.currentUser}"
               component={Intendente}
               ></Route>
                <RutaAutenticada

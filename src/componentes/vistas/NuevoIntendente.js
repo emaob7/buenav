@@ -37,7 +37,7 @@ const style = {
   },
   link: {
     padding: "20px",
-        backgroundColor: "#f5f5f5"
+        backgroundColor: "#fafafa"
   },
   homeIcon: {
     width: 20,
@@ -215,11 +215,8 @@ class NuevoIntendente extends Component {
             <Grid item xs={12} md={3}>
               <TextField
                 name="direccion"
-                type="datetime-local"
+                label="Direccion"
                 variant="outlined"
-                InputLabelProps={{
-                  shrink: true,
-                }}
                 onChange={this.entraDatoEnEstado}
                 value={this.state.intendente.direccion}
               />
