@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,7 +76,7 @@ export default function BotonInstitucion() {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
  {/*agregar botones o menus*/}
-                    <MenuItem onClick={handleClose}>Intendente</MenuItem>
+                    <MenuItem  component={Link} button to="/intendente" onClick={handleClose}>Intendente</MenuItem>
                     <MenuItem onClick={handleClose}>Junta Municipal</MenuItem>
                     <MenuItem onClick={handleClose}>Organigrama</MenuItem>
 {/*agregar botones o menus*/}

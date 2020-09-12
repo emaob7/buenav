@@ -161,7 +161,7 @@ class BarSession extends Component {
             <i className="material-icons">menu</i>
           </IconButton>
           
-        <Typography variant="h6" style={{ color: '#757575' }} >Municipalidad de Buena Vista</Typography>
+        <Typography variant="h6" style={{ color: '#757575' }} component={Link} button to="/" >Municipalidad de Buena Vista</Typography>
         <div className={classes.grow}></div>
 {/**Agregar una imagen cuanse pueda del logo */}
           <div className={classes.sectionDesktop}>

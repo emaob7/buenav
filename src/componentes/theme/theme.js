@@ -1,6 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+
   palette: {
     primary: {
       light: '#4dabf5',
@@ -25,10 +26,12 @@ const theme = createMuiTheme({
     // the background and the text.
     tonalOffset: 0.2,
   },
+  
 });
     
     // Used by the functions below to shift a color's luminance by approximately
     // two indexes within its tonal palette.
     // E.g., shift from Red 500 to Red 300 or Red 700.
-
+   
+ 
  export default theme;

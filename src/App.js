@@ -4,6 +4,7 @@ import { Snackbar } from "@material-ui/core";
 import "./App.css";
 import AppNavBar from "./componentes/Layout/AppNavBar";
 import AppNavBarSimple from "./componentes/Layout/AppNavBarSimple";
+import Footer from "./componentes/Layout/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ListaInmuebles from "./componentes/vistas/ListaInmuebles";
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
@@ -130,7 +131,7 @@ function App(props) {
           </Grid>
         </MuiThemeProvider>
       </Router>
-      
+      <Footer/>
     </React.Fragment>
     
   ) : null;

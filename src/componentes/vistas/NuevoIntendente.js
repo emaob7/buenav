@@ -59,6 +59,7 @@ class NuevoIntendente extends Component {
       direccion: "",
       nombreIn: "",
       correoIn: "",
+      municipio:"",
       descripcion: "",
       
       fotos: []
@@ -211,26 +212,40 @@ class NuevoIntendente extends Component {
                 value={this.state.intendente.nombreIn}
               />
             </Grid>
+            
 
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={6}>
               <TextField
                 name="direccion"
                 label="Direccion"
                 variant="outlined"
+                fullWidth
                 onChange={this.entraDatoEnEstado}
                 value={this.state.intendente.direccion}
               />
             </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                name="municipio"
+                label="Intendente de Ciudad"
+                variant="outlined"
+                fullWidth
+                onChange={this.entraDatoEnEstado}
+                value={this.state.intendente.municipio}
+              />
+            </Grid>
 
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={6}>
               <TextField
                 name="correoIn"
                 label="Correo"
                 variant="outlined"
+                fullWidth
                 onChange={this.entraDatoEnEstado}
                 value={this.state.intendente.correoIn}
               />
             </Grid>
+            
     </Grid>
             <Grid  item xs={12} md={12}>
               <TextField
