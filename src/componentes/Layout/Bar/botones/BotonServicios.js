@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,10 +76,10 @@ export default function BotonServicios() {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
  {/*agregar botones o menus*/}
-                    <MenuItem onClick={handleClose}>Registro de Conducir</MenuItem>
-                    <MenuItem onClick={handleClose}>Habilitacion Vehicular</MenuItem>
-                    <MenuItem onClick={handleClose}>Habilitacion Motocicletas</MenuItem>
-                    <MenuItem onClick={handleClose}>Autoescuela</MenuItem>
+                    <MenuItem component={Link} button to="/licencia" onClick={handleClose}>Registro de Conducir</MenuItem>
+                    <MenuItem component={Link} button to="/habilitacion" onClick={handleClose}>Habilitacion Vehicular</MenuItem>
+                    <MenuItem component={Link} button to="/motocicleta" onClick={handleClose}>Habilitacion Motocicletas</MenuItem>
+                    <MenuItem component={Link} button to="/autoescuela" onClick={handleClose}>Autoescuela</MenuItem>
 {/*agregar botones o menus*/}
                   </MenuList>
                 </ClickAwayListener>

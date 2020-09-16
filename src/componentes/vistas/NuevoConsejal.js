@@ -53,9 +53,9 @@ const style = {
   }
 };
 
-class NuevoIntendente extends Component {
+class NuevoConsejal extends Component {
   state = {
-    intendente: {
+    consejal: {
       direccion: "",
       nombreIn: "",
       correoIn: "",
@@ -68,10 +68,10 @@ class NuevoIntendente extends Component {
   };
 
   entraDatoEnEstado = e => {
-    let intendente_ = Object.assign({}, this.state.intendente);
-    intendente_[e.target.name] = e.target.value;
+    let consejal_ = Object.assign({}, this.state.consejal);
+    consejal_[e.target.name] = e.target.value;
     this.setState({
-        intendente: intendente_
+        consejal: consejal_
     });
   };
 
@@ -85,8 +85,8 @@ class NuevoIntendente extends Component {
     });
   };
 
-  guardarIntendente = () => {
-    const { archivos, intendente } = this.state;
+  guardarConsejal = () => {
+    const { archivos, consejal } = this.state;
 
     //Crearle a cada image(archivo) un alias, ese alias es la referencia con la cual posteriormente lo invocaras
     //Ademas ese alias sera almacenado en la base de datos(firestore/firebase)
@@ -107,17 +107,17 @@ class NuevoIntendente extends Component {
     });
 
     const textoBusqueda =
-    intendente.direccion + " " + intendente.nombreIn + " " + intendente.correoIn;
+    consejal.direccion + " " + consejal.nombreIn + " " + consejal.correoIn;
     let keywords = crearKeyword(textoBusqueda);
 
     this.props.firebase.guardarDocumentos(archivos).then(arregloUrls => {
-        intendente.fotos = arregloUrls;
-        intendente.keywords = keywords;
-        intendente.propietario = this.props.firebase.auth.currentUser.uid;
+        consejal.fotos = arregloUrls;
+        consejal.keywords = keywords;
+        consejal.propietario = this.props.firebase.auth.currentUser.uid;
 
       this.props.firebase.db
-        .collection("Intendentes")
-        .add(intendente)
+        .collection("Consejales")
+        .add(consejal)
         .then(success => {
           this.props.history.push("/");
         })
@@ -153,7 +153,7 @@ class NuevoIntendente extends Component {
                   <MuseumIcon style={style.homeIcon} />
                   Municipalidad Buena Vista
                 </Link>
-                <Typography color="primary"> Agregar Nuevo Intendente</Typography>
+                <Typography color="primary"> Agregar Nuevo Consejal</Typography>
               </Breadcrumbs>
             </Grid>
 
@@ -203,13 +203,13 @@ class NuevoIntendente extends Component {
           <Grid item xs={12} md={6}>
               <TextField
                 name="nombreIn"
-                label="Nombre del Intendente"
+                label="Nombre del Consejal"
                 variant="outlined"                              
                  multiline
                 rows={1}
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.intendente.nombreIn}
+                value={this.state.consejal.nombreIn}
               />
             </Grid>
             
@@ -221,17 +221,17 @@ class NuevoIntendente extends Component {
                 variant="outlined"
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.intendente.direccion}
+                value={this.state.consejal.direccion}
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
                 name="municipio"
-                label="Intendente de Ciudad"
+                label="Consejal de Ciudad"
                 variant="outlined"
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.intendente.municipio}
+                value={this.state.consejal.municipio}
               />
             </Grid>
 
@@ -242,7 +242,7 @@ class NuevoIntendente extends Component {
                 variant="outlined"
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.intendente.correoIn}
+                value={this.state.consejal.correoIn}
               />
             </Grid>
             
@@ -256,12 +256,11 @@ class NuevoIntendente extends Component {
                 rows={10}
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.intendente.descripcion}
+                value={this.state.consejal.descripcion}
               />
             </Grid>
 
-           
-          </Grid>
+    </Grid>
 
          
           <Grid container spacing={3} justify="center">
@@ -274,7 +273,7 @@ class NuevoIntendente extends Component {
                 color="primary"
                 startIcon={<SaveIcon />}
                 style={style.submit}
-                onClick={this.guardarIntendente}
+                onClick={this.guardarConsejal}
               >
                 Guardar y Publicar
               </Button>
@@ -289,4 +288,4 @@ class NuevoIntendente extends Component {
   }
 }
 
-export default consumerFirebase(NuevoIntendente);
+export default consumerFirebase(NuevoConsejal);

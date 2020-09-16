@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,10 +76,11 @@ export default function BotonCiudad() {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
  {/*agregar botones o menus*/}
-                    <MenuItem onClick={handleClose}>Historia</MenuItem>
-                    <MenuItem onClick={handleClose}>Informacion</MenuItem>
-                    <MenuItem onClick={handleClose}>Ubicacion</MenuItem>
-                    <MenuItem onClick={handleClose}>Fotografias</MenuItem>
+                    <MenuItem component={Link} button to="/historia" onClick={handleClose}>Historia</MenuItem>
+                    <MenuItem component={Link} button to="/ubicacioninformacion" onClick={handleClose}>Ubicacion</MenuItem>
+                    <MenuItem component={Link} button to="/mapa" onClick={handleClose}>Mapa</MenuItem>
+                    <MenuItem component={Link} button to="/galeria" onClick={handleClose}>Galeria Fotografica</MenuItem>
+                    
 {/*agregar botones o menus*/}
                   </MenuList>
                 </ClickAwayListener>

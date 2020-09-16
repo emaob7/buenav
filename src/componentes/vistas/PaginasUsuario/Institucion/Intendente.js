@@ -5,10 +5,9 @@ import MuseumIcon from '@material-ui/icons/Museum';
 import logo from "../../../../logo.svg";
 import Card from '@material-ui/core/Card';
 
-import CardMedia from '@material-ui/core/CardMedia';
+
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import {v4 as uuidv4} from "uuid";
+
 
 const style={
     container: {
@@ -23,8 +22,16 @@ const style={
         backgroundColor: "#fafafa"
     },
     typography: {
+       
+        fontSize: '120%',
+      },
+      div:{
+        marginRight: "auto",
+        marginLeft: "auto",
+        backgroundColor: "#0071bc",
+        width : 800,
+        height: 5,
 
-        fontSize: '1.2rem',
       },
     paper2: {
         display: 'flex',
@@ -63,14 +70,18 @@ const style={
         marginRight: "4px"
     },
     submit:{
-        marginTop: 15,
-        marginBottom:10
+        marginTop: -25,
+        marginBottom:25
     },
     avatar : {
+        
         margin: 10,
         width : 200,
         height: 200,
         
+      },
+      divavatar :{
+        position:"relative"
       }
 }
 
@@ -113,9 +124,11 @@ class Intendente extends Component {
                                   <Typography gutterBottom variant="h4">
                                             {card.nombreIn}
                                         </Typography>
+                                        <div style={style.submit}>
                                         <Typography gutterBottom variant="overline" style={style.typography} >
                                             {card.municipio}
                                         </Typography>
+                                        </div>
                                         <Typography gutterBottom variant="body2">
                                             {card.direccion}
                                         </Typography>
@@ -124,18 +137,22 @@ class Intendente extends Component {
                                         </Typography>
                                         </Grid>
                                         <Grid item  xs={12} sm={4}>
-                                  <Avatar style={style.avatar} src={card.fotos || logo} />
+                                            <div style={style.divavatar}>
+                                  <Avatar  style={style.avatar} src={card.fotos || logo} />
+                                  </div>
                                   </Grid>
                                   </Grid>
                                   </Paper>
                                   <Card>
-                                
+                                <div style={style.div} ></div>
                                     <CardContent style={style.CardContent}>
                                        
                                         <Typography gutterBottom variant="body1">
                                             {card.descripcion}
                                         </Typography>
+                                        
                                     </CardContent>
+                                    <div style={style.div} ></div>
                                   </Card>
                               </Grid>
                                 )}

@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,19 +72,19 @@ export default function BotonTransparencia() {
               {...TransitionProps}
               style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
             >
-              <Paper>
+              <Paper >
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                  <MenuList  autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
  {/*agregar botones o menus*/}
-                    <MenuItem onClick={handleClose}>Anexo Personal</MenuItem>
-                    <MenuItem onClick={handleClose}>Contratados</MenuItem>
-                    <MenuItem onClick={handleClose}>Balances</MenuItem>
-                    <MenuItem onClick={handleClose}>Presupuestos</MenuItem>
-                    <MenuItem onClick={handleClose}>Royalties</MenuItem>
-                    <MenuItem onClick={handleClose}>Proveedores</MenuItem>
-                    <MenuItem onClick={handleClose}>Contrataciones Publicas</MenuItem>
-                    <MenuItem onClick={handleClose}>Cheques Emitidas</MenuItem>
-                    <MenuItem onClick={handleClose}>Aportes a Entidades</MenuItem>
+                    <MenuItem component={Link} button to="/anexopersonal" onClick={handleClose}>Anexo Personal</MenuItem>
+                    <MenuItem component={Link} button to="/contratados" onClick={handleClose}>Contratados</MenuItem>
+                    <MenuItem component={Link} button to="/balances" onClick={handleClose}>Balances</MenuItem>
+                    <MenuItem component={Link} button to="/presupuestos" onClick={handleClose}>Presupuestos</MenuItem>
+                    <MenuItem component={Link} button to="/royalties" onClick={handleClose}>Royalties</MenuItem>
+                    <MenuItem component={Link} button to="" onClick={handleClose}>Proveedores</MenuItem>
+                    <MenuItem component={Link} button to="/contrataciones" onClick={handleClose}>Contrataciones Publicas</MenuItem>
+                    <MenuItem component={Link} button to="/cheques" onClick={handleClose}>Cheques Emitidas</MenuItem>
+                    <MenuItem component={Link} button to="/aportes" onClick={handleClose}>Aportes a Entidades</MenuItem>
 {/*agregar botones o menus*/}
                   </MenuList>
                 </ClickAwayListener>

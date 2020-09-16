@@ -19,10 +19,35 @@ import PerfilUsuario from "./componentes/Seguridad/PerfilUsuario";
 import NuevoInmueble from "./componentes/vistas/NuevoInmueble";
 import Intendente from "./componentes/vistas/PaginasUsuario/Institucion/Intendente";
 import NuevoIntendente from "./componentes/vistas/NuevoIntendente";
+import NuevoConsejal from "./componentes/vistas/NuevoConsejal";
 import EditarInmueble from "./componentes/vistas/EditarInmueble";
 import VerMasNoticias from "./componentes/vistas/VerMasNoticias";
 import LoginTelefono from "./componentes/Seguridad/LoginTelefono";
 import Noticias from "./componentes/vistas/Noticias";
+import MarcoLegal from "./componentes/vistas/PaginasUsuario/Institucion/MarcoLegal";
+import ResolucionesMuni from "./componentes/vistas/PaginasUsuario/Institucion/ResolucionesMuni";
+import Organigrama from "./componentes/vistas/PaginasUsuario/Institucion/Organigrama";
+import Galeria from "./componentes/vistas/PaginasUsuario/Ciudad/Galeria";
+import Historia from "./componentes/vistas/PaginasUsuario/Ciudad/Historia";
+import Mapa from "./componentes/vistas/PaginasUsuario/Ciudad/Mapa";
+import UbicacionInformacion from "./componentes/vistas/PaginasUsuario/Ciudad/UbicacionInformacion";
+import Consejales from "./componentes/vistas/PaginasUsuario/Junta/Consejales";
+import Ordenanzas from "./componentes/vistas/PaginasUsuario/Junta/Ordenanzas";
+import ResolucionesJunta from "./componentes/vistas/PaginasUsuario/Junta/ResolucionesJunta";
+import Autoescuela from "./componentes/vistas/PaginasUsuario/Tramites/Autoescuela";
+import Habilitacion from "./componentes/vistas/PaginasUsuario/Tramites/Habilitacion";
+import Licencia from "./componentes/vistas/PaginasUsuario/Tramites/Licencia";
+import Motocicleta from "./componentes/vistas/PaginasUsuario/Tramites/Motocicleta";
+import AnexoPersonal from "./componentes/vistas/PaginasUsuario/Transparencia/AnexoPersonal";
+import Aportes from "./componentes/vistas/PaginasUsuario/Transparencia/Aportes";
+import Balances from "./componentes/vistas/PaginasUsuario/Transparencia/Balances";
+import Cheques from "./componentes/vistas/PaginasUsuario/Transparencia/Cheques";
+import Contrataciones from "./componentes/vistas/PaginasUsuario/Transparencia/Contrataciones";
+import Contratados from "./componentes/vistas/PaginasUsuario/Transparencia/Contratados";
+import Royalties from "./componentes/vistas/PaginasUsuario/Transparencia/Royalties";
+import NoticiasSimple from "./componentes/vistas/PaginasUsuario/NoticiasSimple";
+import Presupuestos from "./componentes/vistas/PaginasUsuario/Transparencia/Presupuestos";
+
 
 function App(props) {
   let firebase = React.useContext(FirebaseContext);
@@ -80,17 +105,7 @@ function App(props) {
 
           <Grid container>
             <Switch>
-              <Route
-                exact
-                path="/"
-                autenticadoFirebase="{firebase.auth.currentUser}"
-                component={Noticias}
-              ></Route>
-              <Route
-              exact
-              path="/intendente"
-              component={Intendente}
-              ></Route>
+              
                <RutaAutenticada
                 exact
                 path="/auth/perfil"
@@ -111,6 +126,18 @@ function App(props) {
               />
               <RutaAutenticada
                 exact
+                path="/consejal/nuevo"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={NuevoConsejal}
+              />
+              <RutaAutenticada
+                exact
+                path="/consejal/editar"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={Consejales}
+              />
+              <RutaAutenticada
+                exact
                 path="/inmueble/:id"
                 autenticadoFirebase="{firebase.auth.currentUser}"
                 component={EditarInmueble}
@@ -124,6 +151,127 @@ function App(props) {
                 path="/verMasNoticias/:id"
                 exact
                 component={VerMasNoticias}
+              ></Route>
+              <Route
+                exact
+                path="/"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={Noticias}
+              ></Route>
+              <Route
+              exact
+              path="/galeria"
+              component={Galeria}
+              ></Route>
+              <Route
+              exact
+              path="/historia"
+              component={Historia}
+              ></Route>
+              <Route
+              exact
+              path="/mapa"
+              component={Mapa}
+              ></Route>
+              <Route
+              exact
+              path="/ubicacioninformacion"
+              component={UbicacionInformacion}
+              ></Route>
+              <Route
+              exact
+              path="/intendente"
+              component={Intendente}
+              ></Route>
+              <Route
+              exact
+              path="/marcolegal"
+              component={MarcoLegal}
+              ></Route>
+              <Route
+              exact
+              path="/organigrama"
+              component={Organigrama}
+              ></Route>
+              <Route
+              exact
+              path="/resolucionesmuni"
+              component={ResolucionesMuni}
+              ></Route>
+              <Route
+              exact
+              path="/consejales"
+              component={Consejales}
+              ></Route>
+              <Route
+              exact
+              path="/ordenanzas"
+              component={Ordenanzas}
+              ></Route>
+              <Route
+              exact
+              path="/resolucionesjunta"
+              component={ResolucionesJunta}
+              ></Route>
+              <Route
+              exact
+              path="/autoescuela"
+              component={Autoescuela}
+              ></Route>
+              <Route
+              exact
+              path="/habilitacion"
+              component={Habilitacion}
+              ></Route>
+              <Route
+              exact
+              path="/licencia"
+              component={Licencia}
+              ></Route>
+              <Route
+              exact
+              path="/motocicleta"
+              component={Motocicleta}
+              ></Route>
+              <Route
+              exact
+              path="/anexopersonal"
+              component={AnexoPersonal}
+              ></Route>
+              <Route
+              exact
+              path="/aportes"
+              component={Aportes}
+              ></Route>
+              <Route
+              exact
+              path="/balances"
+              component={Balances}
+              ></Route>
+              <Route
+              exact
+              path="/cheques"
+              component={Cheques}
+              ></Route>
+              <Route
+              exact
+              path="/contrataciones"
+              component={Contrataciones}
+              ></Route>
+              <Route
+              exact
+              path="/contratados"
+              component={Contratados}
+              ></Route>
+              <Route
+              exact
+              path="/presupuestos"
+              component={Presupuestos}
+              ></Route>
+              <Route
+              exact
+              path="/royalties"
+              component={Royalties}
               ></Route>
               <Route path="/auth/Login" exact component={Login}></Route>
               <Route path="/auth/LoginTelefono" exact component={LoginTelefono}></Route>

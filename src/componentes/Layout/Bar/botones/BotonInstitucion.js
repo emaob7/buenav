@@ -7,7 +7,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
-import HomeWorkIcon from '@material-ui/icons/HomeWork';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,14 +57,14 @@ export default function BotonInstitucion() {
     <div className={classes.root}>
       
         <Button
-        startIcon={<HomeWorkIcon/>}
+        startIcon={<AccountTreeIcon/>}
           style={{ color: '#757575' }}
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          Institucion
+          Institucional
         </Button>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
@@ -77,8 +77,9 @@ export default function BotonInstitucion() {
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
  {/*agregar botones o menus*/}
                     <MenuItem  component={Link} button to="/intendente" onClick={handleClose}>Intendente</MenuItem>
-                    <MenuItem onClick={handleClose}>Junta Municipal</MenuItem>
-                    <MenuItem onClick={handleClose}>Organigrama</MenuItem>
+                    <MenuItem component={Link} button to="/consejales" onClick={handleClose}>Junta Municipal</MenuItem>
+                    <MenuItem component={Link} button to="/organigrama" onClick={handleClose}>Organigrama</MenuItem>
+                    <MenuItem component={Link} button to="/resolucionesmuni" onClick={handleClose}>Resoluciones Municipales</MenuItem>
 {/*agregar botones o menus*/}
                   </MenuList>
                 </ClickAwayListener>

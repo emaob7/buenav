@@ -55,7 +55,7 @@ const style = {
   }
 };
 
-class Noticias extends Component {
+class EditarNoticias extends Component {
   state = {
     inmuebles: [],
     textoBusqueda: "",
@@ -296,4 +296,4 @@ class Noticias extends Component {
   }
 }
 
-export default consumerFirebase(Noticias);
+export default consumerFirebase(EditarNoticias);
