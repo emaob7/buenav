@@ -14,7 +14,7 @@ import {
   TableCell
 } from "@material-ui/core";
 import IconButton from '@material-ui/core/IconButton';
-import MuseumIcon from '@material-ui/icons/Museum';
+import HomeIcon from "@material-ui/icons/Home";
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import { consumerFirebase } from "../../server";
@@ -32,35 +32,55 @@ const style = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "20px",
+    padding: "40px",
     backgroundColor: "#fafafa"
   },
-  link: {
-    padding: "20px",
-        backgroundColor: "#fafafa"
+  breadcrumbs:{
+    backgroundColor: "#fafafa",
+    marginTop:2,
+    padding: "5px",
+    color: "#fff"
   },
+  icon:{
+  marginRight: 0.5,
+  width: 20,
+  height: 20,
+},
+  link: {
+  display: "flex"
+},
+   div:{
+      marginBottom: 22,
+      backgroundColor: "#0071bc",
+      width : 80,
+      height: 5,
+    },
+
+  
   homeIcon: {
     width: 20,
     height: 20,
     marginRight: "4px"
   },
   submit: {
-    marginTop: 15,
+    marginTop: 35,
     marginBottom: 10
   },
   foto: {
     height: "100px"
-  }
+  },
+  input: {
+    display: 'none',
+  },
 };
 
-class NuevoConsejal extends Component {
+class NuevoAnexo extends Component {
   state = {
-    consejal: {
-      direccion: "",
-      nombreIn: "",
-      correoIn: "",
-      municipio:"",
-      descripcion: "",
+    anexo: {
+      mes: "",
+      nombre: "",
+      ano: "",
+     
       
       fotos: []
     },
@@ -68,10 +88,10 @@ class NuevoConsejal extends Component {
   };
 
   entraDatoEnEstado = e => {
-    let consejal_ = Object.assign({}, this.state.consejal);
-    consejal_[e.target.name] = e.target.value;
+    let anexo_ = Object.assign({}, this.state.anexo);
+    anexo_[e.target.name] = e.target.value;
     this.setState({
-        consejal: consejal_
+      anexo: anexo_
     });
   };
 
@@ -85,8 +105,8 @@ class NuevoConsejal extends Component {
     });
   };
 
-  guardarConsejal = () => {
-    const { archivos, consejal } = this.state;
+  guardarAnexo = () => {
+    const { archivos, anexo } = this.state;
 
     //Crearle a cada image(archivo) un alias, ese alias es la referencia con la cual posteriormente lo invocaras
     //Ademas ese alias sera almacenado en la base de datos(firestore/firebase)
@@ -107,17 +127,17 @@ class NuevoConsejal extends Component {
     });
 
     const textoBusqueda =
-    consejal.direccion + " " + consejal.nombreIn + " " + consejal.correoIn;
+      anexo.mes + " " + anexo.nombre + " " + anexo.ano;
     let keywords = crearKeyword(textoBusqueda);
 
     this.props.firebase.guardarDocumentos(archivos).then(arregloUrls => {
-        consejal.fotos = arregloUrls;
-        consejal.keywords = keywords;
-        consejal.propietario = this.props.firebase.auth.currentUser.uid;
+      anexo.fotos = arregloUrls;
+      anexo.keywords = keywords;
+      anexo.propietario = this.props.firebase.auth.currentUser.uid;
 
       this.props.firebase.db
-        .collection("Consejales")
-        .add(consejal)
+        .collection("Anexos")
+        .add(anexo)
         .then(success => {
           this.props.history.push("/");
         })
@@ -145,26 +165,35 @@ class NuevoConsejal extends Component {
 
     return (
       <Container style={style.container}>
+              <Paper style={style.breadcrumbs}>
+                <Grid item xs={12} sm={12}>
+            <Breadcrumbs aria-label="breadcrumbs">
+            <Link color="textSecondary" style={style.link} href="/" >
+                                    <HomeIcon style={style.icon} />
+                                     Municipalidad de Buena Vista / 
+                                </Link>
+              
+            </Breadcrumbs>
+          </Grid>
+      </Paper>
         <Paper style={style.paper}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8}>
-              <Breadcrumbs aria-label="breadcrumb">
-                <Link color="textPrimary" style={style.link} href="/">
-                  <MuseumIcon style={style.homeIcon} />
-                  Municipalidad Buena Vista
-                </Link>
-                <Typography color="primary"> Agregar Nuevo Consejal</Typography>
-              </Breadcrumbs>
-            </Grid>
+          <Typography  variant="h4"  color="textSecondary">
+          AGREGAR NUEVA NOMINA DE FUNCIONARIOS
+        </Typography>
+       
+        
 
             <Grid container justify="left">
+            
             <Grid item xs={12} sm={6} md={4} >
+            <div style={style.div} ></div>
+
               <ImageUploader
                 key={imagenKey}
                 withIcon={false}
-                buttonText="Seleccione una imagen"
+                buttonText="Seleccione un archivo"
                 onChange={this.subirFotos}
-                imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
                 maxFileSize={5242880}
               />
             </Grid>
@@ -202,65 +231,43 @@ class NuevoConsejal extends Component {
           <Grid container spacing={3} >
           <Grid item xs={12} md={6}>
               <TextField
-                name="nombreIn"
-                label="Nombre del Consejal"
+                name="nombre"
+                label="Nombre de documento"
                 variant="outlined"                              
                  multiline
                 rows={1}
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.consejal.nombreIn}
+                value={this.state.anexo.nombre}
               />
             </Grid>
+
+            <Grid item xs={12} md={3}>
+              <TextField
+                name="mes"
+                label="Mes"
+                variant="outlined"
+                fullWidth
+                onChange={this.entraDatoEnEstado}
+                value={this.state.anexo.mes}
+              />
+            </Grid>
+
+                <Grid item xs={12} md={3}>
+              <TextField
+                name="ano"
+                label="Año"
+                variant="outlined"
+                fullWidth
+                onChange={this.entraDatoEnEstado}
+                value={this.state.anexo.ano}
+              />
+            </Grid>
+    </Grid>
             
 
-            <Grid item xs={12} md={6}>
-              <TextField
-                name="direccion"
-                label="Direccion"
-                variant="outlined"
-                fullWidth
-                onChange={this.entraDatoEnEstado}
-                value={this.state.consejal.direccion}
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                name="municipio"
-                label="Consejal de Ciudad"
-                variant="outlined"
-                fullWidth
-                onChange={this.entraDatoEnEstado}
-                value={this.state.consejal.municipio}
-              />
-            </Grid>
-
-                <Grid item xs={12} md={6}>
-              <TextField
-                name="correoIn"
-                label="Correo"
-                variant="outlined"
-                fullWidth
-                onChange={this.entraDatoEnEstado}
-                value={this.state.consejal.correoIn}
-              />
-            </Grid>
-            
-    </Grid>
-            <Grid  item xs={12} md={12}>
-              <TextField
-                name="descripcion"
-                label="Descripcion"
-                variant="outlined"
-                multiline
-                rows={10}
-                fullWidth
-                onChange={this.entraDatoEnEstado}
-                value={this.state.consejal.descripcion}
-              />
-            </Grid>
-
-    </Grid>
+           
+          </Grid>
 
          
           <Grid container spacing={3} justify="center">
@@ -273,7 +280,7 @@ class NuevoConsejal extends Component {
                 color="primary"
                 startIcon={<SaveIcon />}
                 style={style.submit}
-                onClick={this.guardarConsejal}
+                onClick={this.guardarAnexo}
               >
                 Guardar y Publicar
               </Button>
@@ -288,4 +295,4 @@ class NuevoConsejal extends Component {
   }
 }
 
-export default consumerFirebase(NuevoConsejal);
+export default consumerFirebase(NuevoAnexo);

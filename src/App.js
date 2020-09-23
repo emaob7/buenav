@@ -6,7 +6,6 @@ import AppNavBar from "./componentes/Layout/AppNavBar";
 import AppNavBarSimple from "./componentes/Layout/AppNavBarSimple";
 import Footer from "./componentes/Layout/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ListaInmuebles from "./componentes/vistas/ListaInmuebles";
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import theme from "./componentes/theme/theme";
 import RegistrarUsuario from "./componentes/Seguridad/RegistrarUsusario";
@@ -18,8 +17,7 @@ import RutaAutenticada from "./componentes/Seguridad/RutaAutenticada";
 import PerfilUsuario from "./componentes/Seguridad/PerfilUsuario";
 import NuevoInmueble from "./componentes/vistas/NuevoInmueble";
 import Intendente from "./componentes/vistas/PaginasUsuario/Institucion/Intendente";
-import NuevoIntendente from "./componentes/vistas/NuevoIntendente";
-import NuevoConsejal from "./componentes/vistas/NuevoConsejal";
+import NuevoAnexo from "./componentes/vistas/NuevoAnexo";
 import EditarInmueble from "./componentes/vistas/EditarInmueble";
 import VerMasNoticias from "./componentes/vistas/VerMasNoticias";
 import LoginTelefono from "./componentes/Seguridad/LoginTelefono";
@@ -118,17 +116,12 @@ function App(props) {
                 autenticadoFirebase="{firebase.auth.currentUser}"
                 component={NuevoInmueble}
               />
+
               <RutaAutenticada
                 exact
-                path="/intendente/nuevo"
+                path="/anexo/nuevo"
                 autenticadoFirebase="{firebase.auth.currentUser}"
-                component={NuevoIntendente}
-              />
-              <RutaAutenticada
-                exact
-                path="/consejal/nuevo"
-                autenticadoFirebase="{firebase.auth.currentUser}"
-                component={NuevoConsejal}
+                component={NuevoAnexo}
               />
               <RutaAutenticada
                 exact

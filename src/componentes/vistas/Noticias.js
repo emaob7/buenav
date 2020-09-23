@@ -14,7 +14,7 @@ import {
   CardActions,
   ButtonGroup
 } from "@material-ui/core";
-import MuseumIcon from "@material-ui/icons/Museum";
+import HomeIcon from "@material-ui/icons/Home";
 import { consumerFirebase } from "../../server";
 import logo from "../../logo.svg";
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
@@ -27,14 +27,33 @@ const style = {
     paddingTop: 8,
     paddingBottom: 8
   },
-  paper: {
-    backgroundColor: "#f5f5f5",
-    padding: "20px",
-    minHeight: 650
+paper: {
+      backgroundColor: "#f5f5f5",
+      padding: "20px",
+      minHeight: 650,
+      marginTop:8
+    },
+    breadcrumbs:{
+      backgroundColor: "#fafafa",
+      marginTop:2,
+      padding: "5px",
+      color: "#fff"
+    },
+    icon:{
+    marginRight: 0.5,
+    width: 20,
+    height: 20,
   },
-  link: {
+    link: {
     display: "flex"
   },
+     div:{
+        marginBottom: 22,
+        backgroundColor: "#0071bc",
+        width : 80,
+        height: 5,
+      },
+
   gridTextfield: {
     marginTop: "20px",
     marginBottom: "-20px"
@@ -52,7 +71,8 @@ const style = {
   },
   barraBoton: {
     marginTop: "20px"
-  }
+  },
+  
 };
 
 class Noticias extends Component {
@@ -208,19 +228,23 @@ class Noticias extends Component {
   render() {
     return (
       <Container style={style.cardGrid}>
-        <Paper style={style.paper}>
-          <Grid item xs={12} sm={12}>
+      <Paper style={style.breadcrumbs}>
+                <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">
-            <Link color="Primary" style={style.link} href="/" >
-                                    <MuseumIcon style={style.homeIcon} />
-                                    Municipalidad Buena Vista
+            <Link color="textSecondary" style={style.link} href="/" >
+                                    <HomeIcon style={style.icon} />
+                                     Municipalidad de Buena Vista / 
                                 </Link>
               
             </Breadcrumbs>
           </Grid>
-          <Typography variant="h5">
-            Noticias
-          </Typography>
+      </Paper>
+        <Paper style={style.paper}>
+
+                 <Typography  variant="h4"  color="textSecondary">
+          NOTICIAS
+        </Typography>
+        <div style={style.div} ></div>
           <Grid item xs={12} sm={4} style={style.gridTextfield}>
             <TextField
               fullWidth
@@ -229,7 +253,7 @@ class Noticias extends Component {
               }}
               name="textoBusqueda"
               variant="outlined"
-              label="Ingrese el inmueble a buscar"
+              label="Buscar Noticia"
               onChange={this.cambiarBusquedaTexto}
               value={this.state.textoBusqueda}
             />

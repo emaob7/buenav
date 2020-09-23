@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import BarSession from "./Bar/BarSession";
-import barsesionSimple from "./Bar/BarsesionSimple";
+
 import { withStyles } from "@material-ui/styles";
 import { compose, fromRenderProps } from "recompose";
 import { consumerFirebase } from "../../server";

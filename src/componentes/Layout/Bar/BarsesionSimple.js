@@ -6,8 +6,9 @@ import {
   Drawer,
   Avatar,
   Menu,
-  Container
+  Container, Button
 } from "@material-ui/core";
+import HomeIcon from '@material-ui/icons/Home';
 import { withStyles } from "@material-ui/core/styles";
 import { consumerFirebase } from "../../../server";
 import { compose } from "recompose";
@@ -73,7 +74,7 @@ const styles = (theme) => ({
   },
 });
 
-class BarSession extends Component {
+class BarSesionSimple extends Component {
 
 
 
@@ -85,11 +86,9 @@ class BarSession extends Component {
     left: false
   };
   salirSesionApp = () => {
-    const { firebase } = this.state;
-    const [{ sesion }, dispatch] = this.context;
-    salirSesion(dispatch, firebase).then((success) => {
+    
       this.props.history.push("/auth/login");
-    });
+    
   };
 
   toggleDrawer = (side, open) => () => {
@@ -113,8 +112,8 @@ class BarSession extends Component {
   render() {
     const { classes } = this.props;
     const [{ sesion }, dispatch] = this.context;
-    const { usuario } = sesion;
-    let textoUsuario = usuario.nombre + " " + usuario.apellido;
+   
+    
 
     return (
       <div>
@@ -147,9 +146,6 @@ class BarSession extends Component {
           >
             <MenuDerecha
               classes={classes}
-              usuario={usuario}
-              textoUsuario={textoUsuario}
-              fotoUsuario={usuario.foto || fotoUsuarioTemp}
               salirSesion={this.salirSesionApp}
             ></MenuDerecha>
           </div>
@@ -161,11 +157,21 @@ class BarSession extends Component {
             <i className="material-icons">menu</i>
           </IconButton>
           
-        <Typography variant="h6" style={{ color: '#757575' }} component={Link} button to="/" >Municipalidad de Buena Vista</Typography>
+        <Button
+          variant="contained"
+          startIcon={<HomeIcon/>}
+          color="Primary"
+          aria-haspopup="true"
+          component={Link} 
+          button to="/"
+        >
+          Municipalidad de Buena Vista
+        </Button>
         <div className={classes.grow}></div>
 {/**Agregar una imagen cuanse pueda del logo */}
           <div className={classes.sectionDesktop}>
 {/* seccion para menu listas, Desktop */}
+ 
         <BotonInstitucion/>
         <BotonTransparencia/>
         <BotonCiudad/>
@@ -200,4 +206,4 @@ export default compose(
   withRouter,
   consumerFirebase,
   withStyles(styles)
-)(BarSession);
+)(BarSesionSimple);

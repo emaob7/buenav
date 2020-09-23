@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
 
-import BarsesionSimple from "./Bar/BarsesionSimple";
+import BarSesionSimple from "./Bar/BarSesionSimple";
 import { withStyles } from "@material-ui/styles";
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import theme from "../theme/theme";
@@ -60,25 +60,24 @@ class AppNavBarSimple extends Component {
   }
 
   render() {
-    const  [{sesion}, dispatch] = this.context;
-    return sesion ? (sesion.autenticado ? (
+
+    return (
         <MuiThemeProvider theme= {theme}>
       <div>
           
             
         <AppBar position="static" style={{ background: '#fff' }}>
         
-            <BarsesionSimple >
+            <BarSesionSimple >
 
-            </BarsesionSimple>
+            </BarSesionSimple>
           </AppBar>
          
        
       </div>
       </MuiThemeProvider>
     )
-    :null
-    ):null;
+    
   }
 }
 

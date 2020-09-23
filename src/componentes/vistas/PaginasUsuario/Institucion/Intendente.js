@@ -1,165 +1,192 @@
 import React, { Component } from 'react';
-import { consumerFirebase } from '../../../../server';
-import { Paper, Container, Grid, Breadcrumbs, Avatar, Typography } from '@material-ui/core';
-import MuseumIcon from '@material-ui/icons/Museum';
-import logo from "../../../../logo.svg";
+import { Paper, Container, Grid, Breadcrumbs, Typography, Box, Link } from '@material-ui/core';
+import HomeIcon from "@material-ui/icons/Home";
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import Card from '@material-ui/core/Card';
-
-
+import CardMedia from '@material-ui/core/CardMedia';
+import membrete from "../../../Imagenes/membrete/membreteIn.png"
+import fotoIn from "../../../Imagenes/Intendente/fotoIn.jpg"
 import CardContent from '@material-ui/core/CardContent';
 
 
 const style={
-    container: {
-        paddingTop : "8px"
-    },
+  cardGrid: {
+    paddingTop: 8,
+    paddingBottom: 8
+  },
     paper: {
-        marginTop: 8,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "20px",
-        backgroundColor: "#fafafa"
+      backgroundColor: "#f5f5f5",
+      padding: "20px",
+      minHeight: 650,
+      marginTop:8
+    },
+    cardMedia: {
+      paddingTop: "70%",
+      marginRight: 'auto',
     },
     typography: {
        
-        fontSize: '120%',
+        fontSize: '70%',
+        fontWeight: "fontWeightLight",
+       
       },
       div:{
-        marginRight: "auto",
-        marginLeft: "auto",
+        marginBottom: 22,
         backgroundColor: "#0071bc",
-        width : 800,
+        width : 80,
         height: 5,
-
       },
+       div2:{
+        backgroundColor: "#546e7a",
+      },
+
     paper2: {
         display: 'flex',
-        padding: "15px",
-        textAlign: 'left',
-        alignItems: "right",
+        paddingTop: "45px",
+        paddingBottom: "45px",
+        paddingLeft: "-5px",
         color:'#fff',
-        backgroundColor: "#546e7a"
+        backgroundColor: "#616161"
         
-      },
+      }
+      ,
+    breadcrumbs:{
+      backgroundColor: "#fafafa",
+      marginTop:2,
+      padding: "5px",
+      color: "#fff"
+    },
+    icon:{
+    marginRight: 0.5,
+    width: 20,
+    height: 20,
+  },
+  
+  link: {
+    display: "flex"
+  },
     card: {
         height: "100%",
         display: "flex",
         flexDirection: "column"
       },
-      cardMedia: {
-       
-        paddingTop: "100%",
-        marginRight: 'auto',
-      },
-        
     root: {
-        maxWidth: 745,
+        maxWidth: 700,
       },
       media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
       },
-    link: {
-        padding: "20px",
-        backgroundColor: "#fafafa"
-    },
-    homeIcon:{
-        width: 20,
-        height:20,
-        marginRight: "4px"
-    },
+   
     submit:{
-        marginTop: -25,
+        marginTop: -15,
         marginBottom:25
     },
-    avatar : {
-        
-        margin: 10,
-        width : 200,
-        height: 200,
-        
-      },
+    
+     
       divavatar :{
         position:"relative"
-      }
+      },
+      content: {
+        flexGrow:1,
+        backgroundColor: "#fafaaa",
+        padding: "20px",
+        
+},
+root: {
+  maxWidth: 700,
+  
+ 
+},
 }
-
 class Intendente extends Component {
-    state = {
-        ListIntendentes : []
-     }
-
-
-    async componentDidMount() {
-        let objectQuery = this.props.firebase.db.collection("Intendentes");
-        const snapshot = await objectQuery.get();
-        const arrayIntendentes = snapshot.docs.map(doc => {
-            let data = doc.data();
-            let id = doc.id;
-            return {id, ...data};
-        })
-        this.setState({
-            ListIntendentes:arrayIntendentes
-        })
-    }
-
+   
     
         
 
      render(){
          return (
-            <Container style={style.Paper}>
-                <Paper style={style.paper}>
-
-                    <Grid item xs={12} sm={8}>
-                        <Grid container spacing={4}>
-                            {this.state.ListIntendentes.map(card =>
-                              <Grid item key={card.id} xs={12} sm={6} md={12}>
-                                  <Paper style={style.paper2}>
-                    <Grid container direction="row"
-                                    justify="flex-end"
-                                    alignItems="flex-end" spacing={4}>
-                        <Grid item  spacing={1}>
-                                  <Typography gutterBottom variant="h4">
-                                            {card.nombreIn}
-                                        </Typography>
-                                        <div style={style.submit}>
-                                        <Typography gutterBottom variant="overline" style={style.typography} >
-                                            {card.municipio}
-                                        </Typography>
-                                        </div>
-                                        <Typography gutterBottom variant="body2">
-                                            {card.direccion}
-                                        </Typography>
-                                        <Typography gutterBottom variant="subtitle2">
-                                            {card.correoIn}
-                                        </Typography>
-                                        </Grid>
-                                        <Grid item  xs={12} sm={4}>
-                                            <div style={style.divavatar}>
-                                  <Avatar  style={style.avatar} src={card.fotos || logo} />
-                                  </div>
-                                  </Grid>
-                                  </Grid>
-                                  </Paper>
-                                  <Card>
-                                <div style={style.div} ></div>
-                                    <CardContent style={style.CardContent}>
-                                       
-                                        <Typography gutterBottom variant="body1">
-                                            {card.descripcion}
-                                        </Typography>
-                                        
-                                    </CardContent>
-                                    <div style={style.div} ></div>
-                                  </Card>
-                              </Grid>
-                                )}
-
-                        </Grid>
-
-                    </Grid>
+  <Container style={style.cardGrid}>
+      <Paper style={style.breadcrumbs}>
+                <Grid item xs={12} sm={12}>
+            <Breadcrumbs aria-label="breadcrumbs">
+            <Link color="textSecondary" style={style.link} href="/" >
+                                    <HomeIcon style={style.icon} />
+                                     Municipalidad de Buena Vista 
+                                </Link>
+                                <Link color="inherit" style={style.link} href="/intendente" >
+                                    <AssignmentIndIcon style={style.icon} />
+                                     Intendente 
+                                </Link>
+              
+            </Breadcrumbs>
+          </Grid>
+      </Paper>
+      <Paper style={style.paper}>
+        <Typography  variant="h4"  color="textSecondary">
+          INTENDENTE MUNICIPAL
+        </Typography>
+        <div style={style.div} ></div>
+        <Grid container spacing={3}>
+        <Grid item  xs={12} sm={4} md={8}>
+        <Card style={style.root}>
+        <CardMedia
+        style={style.cardMedia}
+          title="consejal"
+          image={fotoIn}
+        />
+        <CardContent>
+        <Typography  variant="h4" component="h2">
+            Ing. Emmanuel Ortigoza
+          </Typography>
+          <Box fontSize={30}>
+          <Typography variant="overline"style={style.typography} color="textSecondary">
+            intendente Municipal
+          </Typography>
+          </Box>
+          <Typography variant="body1" color="textSecondary" component="p">
+            Calle Santa Rosa de Lima/ 454
+          </Typography>
+          <Typography variant="body1" color="textSecondary">
+          emanuelob7@gmail.com
+          </Typography>
+          <Typography variant="body2">
+            <p/>
+          Es hijo del Dr. Óscar Juan Rodríguez Kennedy y Olga Quiñónez, es papá de
+Brisa de 20 años y Emmanuel de 8 meses con su actual pareja Lizarella Valiente.
+Óscar Rodríguez es Licenciado en Administraciónv de Empresas e Ingeniero
+Comercial, desde su más tierna juventud incursionó en la política partidaria, su
+vocación le llevo desde temprano a activar en la Gloriosa Asociación Nacional Republicana, Partido Colorado, siendo designado apoderado de la Seccional Número
+7 y Candidato Juvenil, por esa base partidaria.
+<p/>
+Su vocación de dirigente le llevó también a activar en los centros estudiantiles. Así
+fue elegido Presidente del Centro de Estudiantes de Ex Alumnos del Colegio “Monseñor Lasagna”.
+Desde muy joven ingreso al mundo del trabajo, lo hizo en la función pública, donde
+se desempeño por muchos años y ocupo cargos de importancia como Director de
+la UOC del Palacio de Justicia.
+<p/>
+ Un de los grandes logros en el campo laboral fue la distinción que significo en su
+carrera profesional ser designado como asesor de la comisión de los festejos del
+bicentenario por el Congreso Nacional. Una de las festividades más recordada del
+nuevo siglo y que quedará grabada en letras de molde en el gran libro de la historia
+patria.
+<p/>
+Su inquietud artística le llevó de forma circunstancial a participar en programas de
+televisión, son muy recordados por los televidentes su paso por los sets de Telefuturo, en los programas “Calle 7 y Baila Conmigo”.
+Su carrera política en el campo municipal fue ascendente y brillante. Fue concejal
+de Asunción y en su primer período, a los dos años sus colegas ediles le eligen
+Presidente de la Junta Municipal; y en diciembre de 2019 asume como Intendente
+de Asunción.
+<p/>
+Profesa la religión Católica y más allá de las religiones se siente un verdadero hijo
+de Israel, es Olimpista de corazón, amante de la música paraguaya y amigo de sus
+amigos.
+          </Typography>
+        </CardContent>
+        </Card>
+        </Grid>
+        </Grid>
+          
                 </Paper>
 
             </Container>
@@ -169,4 +196,4 @@ class Intendente extends Component {
 
 }
 
-export default consumerFirebase(Intendente);
+export default Intendente;
