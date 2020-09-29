@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "./App.css";
 import Grid from "@material-ui/core/Grid";
 import { Snackbar } from "@material-ui/core";
 import "./App.css";
@@ -18,10 +19,16 @@ import PerfilUsuario from "./componentes/Seguridad/PerfilUsuario";
 import NuevoInmueble from "./componentes/vistas/NuevoInmueble";
 import Intendente from "./componentes/vistas/PaginasUsuario/Institucion/Intendente";
 import NuevoAnexo from "./componentes/vistas/NuevoAnexo";
+import NuevoFonacide from "./componentes/vistas/NuevoFonacide";
+import NuevoRoyalti from "./componentes/vistas/NuevoRoyalti";
 import EditarInmueble from "./componentes/vistas/EditarInmueble";
 import VerMasNoticias from "./componentes/vistas/VerMasNoticias";
-import LoginTelefono from "./componentes/Seguridad/LoginTelefono";
 import Noticias from "./componentes/vistas/Noticias";
+import EliminarAnexoU from "./componentes/vistas/EliminarAnexoU";
+import EliminarFonacideU from "./componentes/vistas/EliminarFonacideU";
+import EliminarRoyaltiU from "./componentes/vistas/EliminarRoyaltiU";
+import LoginTelefono from "./componentes/Seguridad/LoginTelefono";
+import NoticiasSimple from "./componentes/vistas//PaginasUsuario/NoticiasSimple";
 import MarcoLegal from "./componentes/vistas/PaginasUsuario/Institucion/MarcoLegal";
 import ResolucionesMuni from "./componentes/vistas/PaginasUsuario/Institucion/ResolucionesMuni";
 import Organigrama from "./componentes/vistas/PaginasUsuario/Institucion/Organigrama";
@@ -41,9 +48,8 @@ import Aportes from "./componentes/vistas/PaginasUsuario/Transparencia/Aportes";
 import Balances from "./componentes/vistas/PaginasUsuario/Transparencia/Balances";
 import Cheques from "./componentes/vistas/PaginasUsuario/Transparencia/Cheques";
 import Contrataciones from "./componentes/vistas/PaginasUsuario/Transparencia/Contrataciones";
-import Contratados from "./componentes/vistas/PaginasUsuario/Transparencia/Contratados";
+import Fonacide from "./componentes/vistas/PaginasUsuario/Transparencia/Fonacide";
 import Royalties from "./componentes/vistas/PaginasUsuario/Transparencia/Royalties";
-import NoticiasSimple from "./componentes/vistas/PaginasUsuario/NoticiasSimple";
 import Presupuestos from "./componentes/vistas/PaginasUsuario/Transparencia/Presupuestos";
 
 
@@ -64,7 +70,7 @@ function App(props) {
   
   return autenticacionIniciada !== false ? (
     
-   <React.Fragment>
+   <React.Fragment >
       <Snackbar>
         anchorOrigin = {{ vertical: "bottom", horizontal: "center" }}
         open ={openSnackbar ? openSnackbar.open : false}
@@ -96,6 +102,7 @@ function App(props) {
       
      
         <MuiThemeProvider theme={theme}>
+          <div  className="App-header">
           <AppNavBar />
           <AppNavBarSimple/>
           
@@ -123,11 +130,41 @@ function App(props) {
                 autenticadoFirebase="{firebase.auth.currentUser}"
                 component={NuevoAnexo}
               />
+               <RutaAutenticada
+                exact
+                path="/royalti/nuevo"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={NuevoRoyalti}
+              />
+              <RutaAutenticada
+                exact
+                path="/fonacide/nuevo"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={NuevoFonacide}
+              />
               <RutaAutenticada
                 exact
                 path="/consejal/editar"
                 autenticadoFirebase="{firebase.auth.currentUser}"
                 component={Consejales}
+              />
+              <RutaAutenticada
+                exact
+                path="/anexo/eliminar"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={EliminarAnexoU}
+              />
+              <RutaAutenticada
+                exact
+                path="/fonacide/eliminar"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={EliminarFonacideU}
+              />
+              <RutaAutenticada
+                exact
+                path="/royalti/eliminar"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={EliminarRoyaltiU}
               />
               <RutaAutenticada
                 exact
@@ -149,7 +186,7 @@ function App(props) {
                 exact
                 path="/"
                 autenticadoFirebase="{firebase.auth.currentUser}"
-                component={Noticias}
+                component={NoticiasSimple}
               ></Route>
               <Route
               exact
@@ -170,6 +207,11 @@ function App(props) {
               exact
               path="/ubicacioninformacion"
               component={UbicacionInformacion}
+              ></Route>
+              <Route
+              exact
+              path="/noticias/editar"
+              component={Noticias}
               ></Route>
               <Route
               exact
@@ -253,8 +295,8 @@ function App(props) {
               ></Route>
               <Route
               exact
-              path="/contratados"
-              component={Contratados}
+              path="/fonacide"
+              component={Fonacide}
               ></Route>
               <Route
               exact
@@ -270,6 +312,7 @@ function App(props) {
               <Route path="/auth/LoginTelefono" exact component={LoginTelefono}></Route>
             </Switch>
           </Grid>
+          </div>
         </MuiThemeProvider>
       </Router>
       <Footer/>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { consumerFirebase } from '../../server';
 import { Paper, Container, Grid, Breadcrumbs, Link, Typography, TextField, Button, Table, TableRow, TableCell, TableBody } from '@material-ui/core';
-import MuseumIcon from '@material-ui/icons/Museum';
+import HomeIcon from '@material-ui/icons/Home';
+import FiberNewIcon from '@material-ui/icons/FiberNew';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -20,6 +21,26 @@ const style={
         padding: "20px",
         backgroundColor: "#fafafa"
     },
+    breadcrumbs:{
+        backgroundColor: "#fafafa",
+        marginTop:2,
+        padding: "5px",
+        color: "#fff"
+      },
+      icon:{
+      marginRight: 0.5,
+      width: 20,
+      height: 20,
+    },
+      link: {
+      display: "flex"
+    },
+       div:{
+          marginBottom: 22,
+          backgroundColor: "#0071bc",
+          width : 80,
+          height: 5,
+        },
     paper2: {
         padding: "20px",
         textAlign: 'center',
@@ -41,10 +62,7 @@ const style={
         height: 0,
         paddingTop: '56.25%', // 16:9
       },
-    link: {
-        padding: "20px",
-        backgroundColor: "#fafafa"
-    },
+    
     homeIcon:{
         width: 20,
         height:20,
@@ -92,25 +110,29 @@ class VerMasNoticias extends Component {
 
         return (
             <Container style={style.container}>
-                <Paper style={style.paper}>
+                <Paper style={style.breadcrumbs}>
                     <Grid container spacing={3}>
                         <Grid item xs={12} md={8}>
                             <Breadcrumbs aria-label="breadcrumb">
                                 <Link color="textPrimary" style={style.link} href="/" >
-                                    <MuseumIcon style={style.homeIcon} />
+                                    <HomeIcon style={style.homeIcon} />
                                     Municipalidad Buena Vista
                                 </Link>
-                                <Typography color="primary">Noticias</Typography>
+                                <Link color="inherit" style={style.link} href="/intendente" >
+                                    <FiberNewIcon style={style.icon} />
+                                     Noticias
+                                </Link>
+                               
                             </Breadcrumbs>
                             </Grid>
-                            </Grid>
                             
+                            </Grid>
+                            </Paper>
+                            <Paper style={style.paper}>
                                 <Grid container spacing={4}>
                                 
                                 <Grid item  xs={12} sm={6} md={12}>
-                                <Typography gutterBottom name="categoria">
-                                {this.state.inmueble.pais}
-                                </Typography>
+                               
          <Card style={style.root}>
          
                                 
@@ -135,7 +157,9 @@ class VerMasNoticias extends Component {
                             </Typography>
                              <br/>
                              <br/>
-                         
+                             <Typography gutterBottom name="categoria">
+                                {this.state.inmueble.pais}
+                                </Typography>
                             <Typography variant="body1" name="descripcion">
                                 {this.state.inmueble.descripcion}
                                 </Typography>

@@ -242,7 +242,7 @@ class Noticias extends Component {
         <Paper style={style.paper}>
 
                  <Typography  variant="h4"  color="textSecondary">
-          NOTICIAS
+          NOTICIAS - (EDITAR / ELIMINAR)
         </Typography>
         <div style={style.div} ></div>
           <Grid item xs={12} sm={4} style={style.gridTextfield}>
@@ -253,7 +253,7 @@ class Noticias extends Component {
               }}
               name="textoBusqueda"
               variant="outlined"
-              label="Buscar Noticia"
+              label="Buscar Noticias"
               onChange={this.cambiarBusquedaTexto}
               value={this.state.textoBusqueda}
             />

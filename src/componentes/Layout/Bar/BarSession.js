@@ -13,7 +13,7 @@ import { compose } from "recompose";
 import { StateContext } from "../../../sesion/store";
 import { salirSesion } from "../../../sesion/actions/sesionAction";
 import { MenuDerecha } from "./menuDerecha";
-import { MenuIzquierda } from "./menuIzquierda";
+import { MenuIzquierdaU } from "./menuIzquierdaU";
 import fotoUsuarioTemp from "../../../logo.svg";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -97,10 +97,10 @@ class BarSession extends Component {
             onClick={this.toggleDrawer("left", false)}
             onKeyDown={this.toggleDrawer("left", false)}
           >
-            <MenuIzquierda
+            <MenuIzquierdaU
               classes={classes}
 
-            ></MenuIzquierda>
+            ></MenuIzquierdaU>
           </div>
         </Drawer>
 
@@ -130,7 +130,7 @@ class BarSession extends Component {
           >
             <i className="material-icons">menu</i>
           </IconButton>
-          <Typography variant="h6">Places</Typography>
+          <Typography variant="h6">Permisos administrativos activado!</Typography>
           <div className={classes.grow}></div>
           <div className={classes.sectionDesktop}>
             <IconButton color="inherit"  component={Link} to="">

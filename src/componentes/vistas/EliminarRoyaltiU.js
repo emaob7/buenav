@@ -17,7 +17,7 @@ import {
 import HomeIcon from "@material-ui/icons/Home";
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import { consumerFirebase } from "../../../../server";
+import { consumerFirebase } from "../../server";
 
 
 
@@ -53,7 +53,6 @@ paper: {
         width : 80,
         height: 5,
       },
-     
 
   gridTextfield: {
     marginTop: "20px",
@@ -82,7 +81,7 @@ paper: {
   
 };
 
-class Royalties extends Component {
+class EliminarRoyaltiU extends Component {
   state = {
     royaltis: [],
    
@@ -107,6 +106,24 @@ class Royalties extends Component {
 }
 
 
+  eliminarRoyalti = id => {
+    this.props.firebase.db
+      .collection("Royaltis")
+      .doc(id)
+      .delete()
+      .then(success => {
+        this.eliminarRoyaltiDeListaEstado(id);
+      });
+  };
+
+  eliminarRoyaltiDeListaEstado = id => {
+    const royaltiListaNueva = this.state.royaltis.filter(
+      royalti => royalti.id !== id
+    );
+    this.setState({
+      royaltis: royaltiListaNueva
+    });
+  };
 
 
   render() {
@@ -121,7 +138,7 @@ class Royalties extends Component {
                                 </Link>
                                 <Link color="inherit" style={style.link} href="/intendente" >
                                     <AssignmentIcon style={style.icon} />
-                                     Royalties
+                                     Royalti
                                 </Link>
               
             </Breadcrumbs>
@@ -130,7 +147,7 @@ class Royalties extends Component {
         <Paper style={style.paper}>
 
                  <Typography  variant="h4"  color="textSecondary">
-          ROYALTIES - TESAKÃ
+          ROYALTIS - (ELIMINAR)
         </Typography>
         <div style={style.div} ></div>
 
@@ -142,11 +159,12 @@ class Royalties extends Component {
                     <CardContent style={style.cardContent}>
                       <Typography gutterBottom variant="h6" component="h2">
                         {card.nombre + " - " + card.mes + " - " + card.ano + "    "}
-                     
                       <Button style={style.botones} to="chart" target="_blank" size="small" variant="contained" color="primary" href={(card.fotos)}  startIcon={<PictureAsPdfIcon/>} >
                         Ver documento
                       </Button>
-                     
+                      <Button  variant="contained" size="small" color="secondary" onClick={() => this.eliminarRoyalti(card.id)}>
+                        Eliminar
+                      </Button>
                       
                       </Typography>
                       </CardContent>
@@ -161,4 +179,4 @@ class Royalties extends Component {
   }
 }
 
-export default consumerFirebase(Royalties);
+export default consumerFirebase(EliminarRoyaltiU);

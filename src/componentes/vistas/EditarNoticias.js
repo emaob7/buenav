@@ -219,7 +219,7 @@ class EditarNoticias extends Component {
             </Breadcrumbs>
           </Grid>
           <Typography variant="h5">
-            Noticias
+            Noticias - (EDITAR / ELIMINAR)
           </Typography>
           <Grid item xs={12} sm={4} style={style.gridTextfield}>
             <TextField

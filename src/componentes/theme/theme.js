@@ -1,17 +1,17 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
-
+// azul #152549 azul letra #13387f gris #f6f6f6  rojo #d8232f   dorado #bb691e  
   palette: {
     primary: {
       light: '#4dabf5',
-      main: '#2196f3',
+      main: '#152549',
       dark: '#1769aa',
       contrastText: '#fff',
     },
     secondary: {
       light: '#e57373',
-      main: '#f44336',
+      main: '#c30b31',
       dark: '#d32f2f',
       contrastText: '#fff',
     },

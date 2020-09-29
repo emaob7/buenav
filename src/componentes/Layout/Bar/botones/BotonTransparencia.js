@@ -77,10 +77,11 @@ export default function BotonTransparencia() {
                   <MenuList  autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
  {/*agregar botones o menus*/}
                     <MenuItem component={Link} button to="/anexopersonal" onClick={handleClose}>Anexo Personal</MenuItem>
-                    <MenuItem component={Link} button to="/contratados" onClick={handleClose}>Contratados</MenuItem>
+                    <MenuItem component={Link} button to="/royalties" onClick={handleClose}>Royalties</MenuItem>
+                    <MenuItem component={Link} button to="/fonacide" onClick={handleClose}>Fonacide</MenuItem>
                     <MenuItem component={Link} button to="/balances" onClick={handleClose}>Balances</MenuItem>
                     <MenuItem component={Link} button to="/presupuestos" onClick={handleClose}>Presupuestos</MenuItem>
-                    <MenuItem component={Link} button to="/royalties" onClick={handleClose}>Royalties</MenuItem>
+
                     <MenuItem component={Link} button to="" onClick={handleClose}>Proveedores</MenuItem>
                     <MenuItem component={Link} button to="/contrataciones" onClick={handleClose}>Contrataciones Publicas</MenuItem>
                     <MenuItem component={Link} button to="/cheques" onClick={handleClose}>Cheques Emitidas</MenuItem>

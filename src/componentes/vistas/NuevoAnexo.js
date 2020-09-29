@@ -13,7 +13,7 @@ import {
   TableRow,
   TableCell
 } from "@material-ui/core";
-import IconButton from '@material-ui/core/IconButton';
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import HomeIcon from "@material-ui/icons/Home";
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
@@ -179,7 +179,7 @@ class NuevoAnexo extends Component {
         <Paper style={style.paper}>
           <Grid container spacing={3}>
           <Typography  variant="h4"  color="textSecondary">
-          AGREGAR NUEVA NOMINA DE FUNCIONARIOS
+          AGREGAR NOMINA DE FUNCIONARIOS
         </Typography>
        
         
@@ -192,7 +192,7 @@ class NuevoAnexo extends Component {
               <ImageUploader
                 key={imagenKey}
                 withIcon={false}
-                buttonText="Seleccione un archivo"
+                buttonText="Seleccione un archivo pdf"
                 onChange={this.subirFotos}
                 maxFileSize={5242880}
               />
@@ -206,12 +206,17 @@ class NuevoAnexo extends Component {
                      
                       <TableCell align="left">
                         <Paper>
-                        <img src={archivo.urlTemp} style={style.foto} />
-                       
-                      
+                        <link src={archivo.urlTemp}  />
                         <Button
-                          
-                          startIcon={<DeleteIcon />}
+                         color="primary"
+                         startIcon={<PictureAsPdfIcon/>}
+                            >
+                            Archivo Pdf Agregado
+                         </Button>
+                       
+                         <Button
+                         variant="contained"
+                          endIcon={<DeleteIcon />}
                           color="secondary"
                           size="small"
                           onClick={this.eliminarFoto(archivo.name)}
@@ -286,7 +291,7 @@ class NuevoAnexo extends Component {
               </Button>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-                        <Button href="/" color="secondary" fullWidth style={style.submit} size="large">Cancelar</Button>
+                        <Button  variant="contained" href="/" color="secondary" fullWidth style={style.submit} size="large">Cancelar</Button>
                         </Grid>
           </Grid>
         </Paper>

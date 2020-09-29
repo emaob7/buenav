@@ -273,7 +273,7 @@ class ListaInmuebles extends Component {
                             : logo
                           : logo
                       }
-                      title="Mi Inmueble"
+                      title="Novedad"
                     />
 
                     <CardContent style={style.cardContent}>

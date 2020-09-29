@@ -13,8 +13,8 @@ import {
   TableRow,
   TableCell
 } from "@material-ui/core";
-import IconButton from '@material-ui/core/IconButton';
-import MuseumIcon from '@material-ui/icons/Museum';
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+import HomeIcon from "@material-ui/icons/Home";
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import { consumerFirebase } from "../../server";
@@ -34,7 +34,8 @@ const style = {
     alignItems: "center",
     padding: "40px",
     backgroundColor: "#fafafa"
-  },  breadcrumbs:{
+  },
+  breadcrumbs:{
     backgroundColor: "#fafafa",
     marginTop:2,
     padding: "5px",
@@ -62,21 +63,24 @@ const style = {
     marginRight: "4px"
   },
   submit: {
-    marginTop: 15,
+    marginTop: 35,
     marginBottom: 10
   },
   foto: {
     height: "100px"
-  }
+  },
+  input: {
+    display: 'none',
+  },
 };
 
-class NuevoInmueble extends Component {
+class NuevoFonacide extends Component {
   state = {
-    inmueble: {
-      direccion: "",
-      ciudad: "",
-      pais: "",
-      descripcion: "",
+    fonacide: {
+      mes: "",
+      nombre: "",
+      ano: "",
+     
       
       fotos: []
     },
@@ -84,10 +88,10 @@ class NuevoInmueble extends Component {
   };
 
   entraDatoEnEstado = e => {
-    let inmueble_ = Object.assign({}, this.state.inmueble);
-    inmueble_[e.target.name] = e.target.value;
+    let fonacide_ = Object.assign({}, this.state.fonacide);
+    fonacide_[e.target.name] = e.target.value;
     this.setState({
-      inmueble: inmueble_
+        fonacide: fonacide_
     });
   };
 
@@ -101,8 +105,8 @@ class NuevoInmueble extends Component {
     });
   };
 
-  guardarInmueble = () => {
-    const { archivos, inmueble } = this.state;
+  guardarFonacide = () => {
+    const { archivos, fonacide } = this.state;
 
     //Crearle a cada image(archivo) un alias, ese alias es la referencia con la cual posteriormente lo invocaras
     //Ademas ese alias sera almacenado en la base de datos(firestore/firebase)
@@ -123,17 +127,17 @@ class NuevoInmueble extends Component {
     });
 
     const textoBusqueda =
-      inmueble.direccion + " " + inmueble.ciudad + " " + inmueble.pais;
+    fonacide.mes + " " + fonacide.nombre + " " + fonacide.ano;
     let keywords = crearKeyword(textoBusqueda);
 
     this.props.firebase.guardarDocumentos(archivos).then(arregloUrls => {
-      inmueble.fotos = arregloUrls;
-      inmueble.keywords = keywords;
-      inmueble.propietario = this.props.firebase.auth.currentUser.uid;
+        fonacide.fotos = arregloUrls;
+        fonacide.keywords = keywords;
+        fonacide.propietario = this.props.firebase.auth.currentUser.uid;
 
       this.props.firebase.db
-        .collection("Inmuebles")
-        .add(inmueble)
+        .collection("Fonacides")
+        .add(fonacide)
         .then(success => {
           this.props.history.push("/");
         })
@@ -161,32 +165,35 @@ class NuevoInmueble extends Component {
 
     return (
       <Container style={style.container}>
+              <Paper style={style.breadcrumbs}>
+                <Grid item xs={12} sm={12}>
+            <Breadcrumbs aria-label="breadcrumbs">
+            <Link color="textSecondary" style={style.link} href="/" >
+                                    <HomeIcon style={style.icon} />
+                                     Municipalidad de Buena Vista / 
+                                </Link>
+              
+            </Breadcrumbs>
+          </Grid>
+      </Paper>
         <Paper style={style.paper}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8}>
-              <Breadcrumbs aria-label="breadcrumb">
-                <Link color="textPrimary" style={style.link} href="/">
-                  <MuseumIcon style={style.homeIcon} />
-                  Municipalidad Buena Vista
-                </Link>
-                <Typography color="primary"> Agregar Nueva Noticia</Typography>
-              </Breadcrumbs>
-            </Grid>
-            
+          <Typography  variant="h4"  color="textSecondary">
+          AGREGAR NUEVO DOCUMENTO FONACIDE
+        </Typography>
+       
         
+
             <Grid container justify="left">
             
             <Grid item xs={12} sm={6} md={4} >
-            <Typography  variant="h4"  color="textSecondary">
-          AGREGAR NOTICIA
-        </Typography>
             <div style={style.div} ></div>
+
               <ImageUploader
                 key={imagenKey}
                 withIcon={false}
-                buttonText="Seleccione una imagen"
+                buttonText="Seleccione un archivo pdf"
                 onChange={this.subirFotos}
-                imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
                 maxFileSize={5242880}
               />
             </Grid>
@@ -199,12 +206,17 @@ class NuevoInmueble extends Component {
                      
                       <TableCell align="left">
                         <Paper>
-                        <img src={archivo.urlTemp} style={style.foto} />
-                       
-                      
+                        <link src={archivo.urlTemp}  />
                         <Button
-                          
-                          startIcon={<DeleteIcon />}
+                         color="primary"
+                         startIcon={<PictureAsPdfIcon/>}
+                            >
+                            Archivo Pdf Agregado
+                         </Button>
+                       
+                         <Button
+                         variant="contained"
+                          endIcon={<DeleteIcon />}
                           color="secondary"
                           size="small"
                           onClick={this.eliminarFoto(archivo.name)}
@@ -224,55 +236,40 @@ class NuevoInmueble extends Component {
           <Grid container spacing={3} >
           <Grid item xs={12} md={6}>
               <TextField
-                name="ciudad"
-                label="Titulo Grande"
+                name="nombre"
+                label="Nombre de documento"
                 variant="outlined"                              
                  multiline
                 rows={1}
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.inmueble.ciudad}
+                value={this.state.fonacide.nombre}
               />
             </Grid>
-          
+
             <Grid item xs={12} md={3}>
               <TextField
-                name="direccion"
-                type="datetime-local"
+                name="mes"
+                label="Mes"
                 variant="outlined"
                 fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
                 onChange={this.entraDatoEnEstado}
-                value={this.state.inmueble.direccion}
+                value={this.state.fonacide.mes}
               />
             </Grid>
 
                 <Grid item xs={12} md={3}>
               <TextField
-                name="pais"
-                label="Categoria"
+                name="ano"
+                label="Año"
                 variant="outlined"
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.inmueble.pais}
+                value={this.state.fonacide.ano}
               />
             </Grid>
     </Grid>
-    
-            <Grid  item xs={12} md={12} >
-              <TextField
-                name="descripcion"
-                label="Descripcion"
-                variant="outlined"
-                multiline
-                rows={10}
-                fullWidth
-                onChange={this.entraDatoEnEstado}
-                value={this.state.inmueble.descripcion}
-              />
-            </Grid>
+            
 
            
           </Grid>
@@ -288,7 +285,7 @@ class NuevoInmueble extends Component {
                 color="primary"
                 startIcon={<SaveIcon />}
                 style={style.submit}
-                onClick={this.guardarInmueble}
+                onClick={this.guardarFonacide}
               >
                 Guardar y Publicar
               </Button>
@@ -303,4 +300,4 @@ class NuevoInmueble extends Component {
   }
 }
 
-export default consumerFirebase(NuevoInmueble);
+export default consumerFirebase(NuevoFonacide);

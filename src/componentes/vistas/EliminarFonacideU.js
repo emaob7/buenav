@@ -17,7 +17,7 @@ import {
 import HomeIcon from "@material-ui/icons/Home";
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import { consumerFirebase } from "../../../../server";
+import { consumerFirebase } from "../../server";
 
 
 
@@ -53,7 +53,6 @@ paper: {
         width : 80,
         height: 5,
       },
-     
 
   gridTextfield: {
     marginTop: "20px",
@@ -82,9 +81,9 @@ paper: {
   
 };
 
-class Royalties extends Component {
+class EliminarFonacideU extends Component {
   state = {
-    royaltis: [],
+    fonacides: [],
    
 
   };
@@ -94,19 +93,37 @@ class Royalties extends Component {
     
    
   async componentDidMount() {
-    let objectQuery = this.props.firebase.db.collection("Royaltis");
+    let objectQuery = this.props.firebase.db.collection("Fonacides");
     const snapshot = await objectQuery.get();
-    const arrayRoyaltis = snapshot.docs.map(doc => {
+    const arrayFonacides = snapshot.docs.map(doc => {
         let data = doc.data();
         let id = doc.id;
         return {id, ...data};
     })
     this.setState({
-        royaltis:arrayRoyaltis
+        fonacides:arrayFonacides
     })
 }
 
 
+  eliminarFonacide = id => {
+    this.props.firebase.db
+      .collection("Fonacides")
+      .doc(id)
+      .delete()
+      .then(success => {
+        this.eliminarFonacideDeListaEstado(id);
+      });
+  };
+
+  eliminarFonacideDeListaEstado = id => {
+    const fonacideListaNueva = this.state.fonacides.filter(
+      fonacide => fonacide.id !== id
+    );
+    this.setState({
+      fonacides: fonacideListaNueva
+    });
+  };
 
 
   render() {
@@ -121,7 +138,7 @@ class Royalties extends Component {
                                 </Link>
                                 <Link color="inherit" style={style.link} href="/intendente" >
                                     <AssignmentIcon style={style.icon} />
-                                     Royalties
+                                     Fonacide
                                 </Link>
               
             </Breadcrumbs>
@@ -130,23 +147,24 @@ class Royalties extends Component {
         <Paper style={style.paper}>
 
                  <Typography  variant="h4"  color="textSecondary">
-          ROYALTIES - TESAKÃ
+          FONACIDE - (ELIMINAR)
         </Typography>
         <div style={style.div} ></div>
 
           <Grid item xs={12} sm={12} style={style.gridTextfield}>
             <Grid container spacing={2}>
-              {this.state.royaltis.map(card => (
+              {this.state.fonacides.map(card => (
                 <Grid item key={card.id} xs={12} sm={6} md={8}>
                   <Card style={style.card}>
                     <CardContent style={style.cardContent}>
                       <Typography gutterBottom variant="h6" component="h2">
                         {card.nombre + " - " + card.mes + " - " + card.ano + "    "}
-                     
                       <Button style={style.botones} to="chart" target="_blank" size="small" variant="contained" color="primary" href={(card.fotos)}  startIcon={<PictureAsPdfIcon/>} >
                         Ver documento
                       </Button>
-                     
+                      <Button  variant="contained" size="small" color="secondary" onClick={() => this.eliminarFonacide(card.id)}>
+                        Eliminar
+                      </Button>
                       
                       </Typography>
                       </CardContent>
@@ -161,4 +179,4 @@ class Royalties extends Component {
   }
 }
 
-export default consumerFirebase(Royalties);
+export default consumerFirebase(EliminarFonacideU);

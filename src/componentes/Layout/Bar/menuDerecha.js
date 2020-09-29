@@ -19,7 +19,7 @@ export const MenuDerecha = ({
       </ListItem>
 
       <ListItem button onClick={salirSesion}>
-          <ListItemText classes={{primary: classes.listItemText}} primary="Cerrar sesion" />
+          <ListItemText classes={{primary: classes.listItemText}} primary="Autenticarse" />
       </ListItem>
     </List>
   </div>
