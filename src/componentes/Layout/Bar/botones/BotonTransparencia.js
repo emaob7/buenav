@@ -7,7 +7,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
-import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,7 @@ export default function BotonTransparencia() {
     <div className={classes.root}>
       
         <Button
-        startIcon={<PlaylistAddCheckIcon/>}
+        startIcon={<KeyboardArrowDownIcon/>}
         style={{ color: '#757575' }}
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
@@ -79,7 +79,7 @@ export default function BotonTransparencia() {
                     <MenuItem component={Link} button to="/anexopersonal" onClick={handleClose}>Anexo Personal</MenuItem>
                     <MenuItem component={Link} button to="/royalties" onClick={handleClose}>Royalties</MenuItem>
                     <MenuItem component={Link} button to="/fonacide" onClick={handleClose}>Fonacide</MenuItem>
-                    <MenuItem component={Link} button to="/balances" onClick={handleClose}>Balances</MenuItem>
+                    <MenuItem component={Link} button to="/inventario" onClick={handleClose}>Inventario</MenuItem>
                     <MenuItem component={Link} button to="/presupuestos" onClick={handleClose}>Presupuestos</MenuItem>
 
                     <MenuItem component={Link} button to="" onClick={handleClose}>Proveedores</MenuItem>

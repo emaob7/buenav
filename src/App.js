@@ -45,12 +45,14 @@ import Licencia from "./componentes/vistas/PaginasUsuario/Tramites/Licencia";
 import Motocicleta from "./componentes/vistas/PaginasUsuario/Tramites/Motocicleta";
 import AnexoPersonal from "./componentes/vistas/PaginasUsuario/Transparencia/AnexoPersonal";
 import Aportes from "./componentes/vistas/PaginasUsuario/Transparencia/Aportes";
-import Balances from "./componentes/vistas/PaginasUsuario/Transparencia/Balances";
+import Inventario from "./componentes/vistas/PaginasUsuario/Transparencia/Inventario";
 import Cheques from "./componentes/vistas/PaginasUsuario/Transparencia/Cheques";
 import Contrataciones from "./componentes/vistas/PaginasUsuario/Transparencia/Contrataciones";
 import Fonacide from "./componentes/vistas/PaginasUsuario/Transparencia/Fonacide";
 import Royalties from "./componentes/vistas/PaginasUsuario/Transparencia/Royalties";
 import Presupuestos from "./componentes/vistas/PaginasUsuario/Transparencia/Presupuestos";
+import Principal from "./componentes/vistas/PaginasUsuario/Principal";
+
 
 
 function App(props) {
@@ -105,6 +107,7 @@ function App(props) {
           <div  className="App-header">
           <AppNavBar />
           <AppNavBarSimple/>
+          
           
           
 
@@ -184,9 +187,13 @@ function App(props) {
               ></Route>
               <Route
                 exact
-                path="/"
-                autenticadoFirebase="{firebase.auth.currentUser}"
+                path="/noticias1"
                 component={NoticiasSimple}
+              ></Route>
+              <Route
+                exact
+                path="/"
+                component={Principal}
               ></Route>
               <Route
               exact
@@ -280,8 +287,8 @@ function App(props) {
               ></Route>
               <Route
               exact
-              path="/balances"
-              component={Balances}
+              path="/inventario"
+              component={Inventario}
               ></Route>
               <Route
               exact

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
+import ListaTransparencia from "../../../Layout/Bar/listas/ListaTransparencia";
 import {
   Container,
   Paper,
@@ -7,12 +8,10 @@ import {
   Breadcrumbs,
   Link,
   Typography,
-  TextField,
-  CardMedia,
+ 
   Card,
   CardContent,
-  CardActions,
-  ButtonGroup
+
 } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -112,6 +111,7 @@ class Royalties extends Component {
   render() {
     return (
       <Container style={style.cardGrid}>
+        <ListaTransparencia/>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">

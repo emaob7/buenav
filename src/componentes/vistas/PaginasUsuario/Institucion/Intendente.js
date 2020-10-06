@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Paper, Container, Grid, Breadcrumbs, Typography, Box, Link } from '@material-ui/core';
 import HomeIcon from "@material-ui/icons/Home";
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import membrete from "../../../Imagenes/membrete/membreteIn.png"
+import ListaInstitucion from "../../../Layout/Bar/listas/ListaInstitucion";
 import fotoIn from "../../../Imagenes/Intendente/fotoIn.jpg"
 import CardContent from '@material-ui/core/CardContent';
 
@@ -19,10 +19,11 @@ const style={
       padding: "20px",
       minHeight: 650,
       marginTop:8
+      
     },
     cardMedia: {
       paddingTop: "70%",
-      marginRight: 'auto',
+     
     },
     typography: {
        
@@ -37,7 +38,9 @@ const style={
         height: 5,
       },
        div2:{
-        backgroundColor: "#546e7a",
+        
+        marginRight: 'auto',
+        marginLeft: 'auto',
       },
 
     paper2: {
@@ -68,10 +71,11 @@ const style={
     card: {
         height: "100%",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
       },
     root: {
         maxWidth: 700,
+
       },
       media: {
         height: 0,
@@ -107,28 +111,33 @@ class Intendente extends Component {
      render(){
          return (
   <Container style={style.cardGrid}>
+    <ListaInstitucion/>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
+            
             <Breadcrumbs aria-label="breadcrumbs">
             <Link color="textSecondary" style={style.link} href="/" >
                                     <HomeIcon style={style.icon} />
                                      Municipalidad de Buena Vista 
                                 </Link>
                                 <Link color="inherit" style={style.link} href="/intendente" >
-                                    <AssignmentIndIcon style={style.icon} />
+                                    <EmojiPeopleIcon style={style.icon} />
                                      Intendente 
                                 </Link>
-              
-            </Breadcrumbs>
-          </Grid>
+                        </Breadcrumbs>
+                      </Grid>
       </Paper>
+      
+      <Grid container spacing={3}>
+            <Grid item  xs={12} sm={4} md={12}>
       <Paper style={style.paper}>
         <Typography  variant="h4"  color="textSecondary">
           INTENDENTE MUNICIPAL
         </Typography>
         <div style={style.div} ></div>
         <Grid container spacing={3}>
-        <Grid item  xs={12} sm={4} md={8}>
+        <Grid item  xs={12} sm={4} md={12}>
+          <div style={style.div2}>
         <Card style={style.root}>
         <CardMedia
         style={style.cardMedia}
@@ -184,11 +193,13 @@ amigos.
           </Typography>
         </CardContent>
         </Card>
+        </div>
         </Grid>
         </Grid>
           
                 </Paper>
-
+                </Grid>
+                </Grid>
             </Container>
          )
      }

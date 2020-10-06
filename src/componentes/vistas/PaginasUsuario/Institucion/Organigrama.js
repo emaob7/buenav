@@ -3,6 +3,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import { Card,CardMedia, Container, Grid, Paper, Typography,Link, Breadcrumbs } from '@material-ui/core';
 import organigrama from "../../../Imagenes/Organigrama/Organigrama.png"
+import ListaInstitucion from "../../../Layout/Bar/listas/ListaInstitucion";
 
 const style = {
   cardGrid: {
@@ -60,6 +61,7 @@ export default class Organigrama extends Component {
         return (
            
             <Container style={style.cardGrid}>
+              <ListaInstitucion/>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">
@@ -67,7 +69,7 @@ export default class Organigrama extends Component {
                                     <HomeIcon style={style.icon} />
                                      Municipalidad de Buena Vista 
                                 </Link>
-                                <Link color="inherit" style={style.link} href="/consejales" >
+                                <Link color="inherit" style={style.link} href="/organigrama" >
                                     <AccountTreeIcon style={style.icon} />
                                      Organigrama 
                                 </Link>
@@ -85,7 +87,7 @@ export default class Organigrama extends Component {
         <Card style={style.root}>
         <CardMedia
         style={style.cardMedia}
-          title="consejal"
+          title="Organigrama"
           image={organigrama}
         />
 

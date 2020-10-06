@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
+import ListaTransparencia from "../../../Layout/Bar/listas/ListaTransparencia";
 import {
   Container,
   Paper,
@@ -15,7 +16,7 @@ import {
   ButtonGroup
 } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import { consumerFirebase } from "../../../../server";
 
@@ -112,6 +113,7 @@ class AnexoPersonal extends Component {
   render() {
     return (
       <Container style={style.cardGrid}>
+        <ListaTransparencia/>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">
@@ -120,7 +122,7 @@ class AnexoPersonal extends Component {
                                      Municipalidad de Buena Vista 
                                 </Link>
                                 <Link color="inherit" style={style.link} href="/intendente" >
-                                    <AssignmentIcon style={style.icon} />
+                                    <AssignmentIndIcon style={style.icon} />
                                      Nomina de Funcionarios
                                 </Link>
               

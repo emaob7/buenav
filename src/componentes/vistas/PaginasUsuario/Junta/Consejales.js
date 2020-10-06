@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import fotoCon from "../../../Imagenes/consejales/logo.jpg";
 import HomeIcon from "@material-ui/icons/Home";
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import ListaInstitucion from "../../../Layout/Bar/listas/ListaInstitucion";
 
 const style = {
   cardGrid: {
@@ -56,6 +57,7 @@ export default class Consejales extends Component {
     return (
 
       <Container style={style.cardGrid}>
+        <ListaInstitucion/>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">

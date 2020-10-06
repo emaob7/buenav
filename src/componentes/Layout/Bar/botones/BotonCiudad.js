@@ -7,7 +7,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
-import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,7 @@ export default function BotonCiudad() {
     <div className={classes.root}>
       
         <Button
-          startIcon={<LoyaltyIcon/>}
+          startIcon={<KeyboardArrowDownIcon/>}
           style={{ color: '#757575' }}
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}

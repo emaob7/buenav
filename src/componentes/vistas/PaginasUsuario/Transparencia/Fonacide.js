@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
+import ListaTransparencia from "../../../Layout/Bar/listas/ListaTransparencia";
 import {
   Container,
   Paper,
@@ -112,6 +113,7 @@ class Fonacide extends Component {
   render() {
     return (
       <Container style={style.cardGrid}>
+        <ListaTransparencia/>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">
