@@ -8,6 +8,7 @@ import {
   Avatar
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+import Tooltip from '@material-ui/core/Tooltip';
 import { consumerFirebase } from "../../../server";
 import { compose } from "recompose";
 import { StateContext } from "../../../sesion/store";
@@ -124,23 +125,25 @@ class BarSession extends Component {
           </div>
         </Drawer>
         <Toolbar>
-          <IconButton 
-          color="inherit"
-          onClick={this.toggleDrawer("left",true)}
-          >
-            <i className="material-icons">menu</i>
-          </IconButton>
+
           <Typography variant="h6">Permisos administrativos activado!</Typography>
           <div className={classes.grow}></div>
           <div className={classes.sectionDesktop}>
-            <IconButton color="inherit"  component={Link} to="">
-              <i className="material-icons">mail_outline</i>
-            </IconButton>
-            <Button color="inherit" onClick={this.salirSesionApp}>Salir</Button>
-            <Button color="inherit">{textoUsuario}</Button>
+            
+          <Button color="inherit">{textoUsuario}</Button>
             <Avatar
             src={usuario.foto || fotoUsuarioTemp}>
             </Avatar>
+            
+            <Tooltip title="Administracion">
+          
+            <IconButton
+              color="inherit"
+              onClick={this.toggleDrawer("right", true)}
+            >
+              <i className="material-icons">more_vert</i>
+            </IconButton>
+            </Tooltip>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

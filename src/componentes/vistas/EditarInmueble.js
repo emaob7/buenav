@@ -221,12 +221,14 @@ class EditarInmueble extends Component {
                                 value={this.state.inmueble.direccion}
                             />
                             </Grid>
-                         <Grid item xs={8} sm={3}>
+                         <Grid item xs={12} sm={12}>
                             <TextField 
                                 name="pais"
-                                label="Categoria"
+                                label="Primer parrafo"
                                 variant="outlined"
-                                
+                                multiline
+                                rows={2}
+                                fullWidth
                                 onChange={this.cambiarDato}
                                 value={this.state.inmueble.pais}
                               
@@ -237,7 +239,7 @@ class EditarInmueble extends Component {
                         <Grid item xs={12} sm={12}>
                             <TextField 
                                 name="descripcion"
-                                label="Descripcion"
+                                label="Segundo parrafo y seguir"
                                 variant="outlined"
                                 multiline
                                 rows={10}

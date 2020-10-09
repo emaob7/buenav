@@ -66,7 +66,7 @@ class AppNavBarSimple extends Component {
       <div>
           
             
-        <AppBar position="static" style={{ background: '#fff' }}>
+        <AppBar position="sticky" style={{ background: '#fff' }}>
         
             <BarSesionSimple >
 

@@ -269,8 +269,11 @@ class EditarNoticias extends Component {
                     />
 
                     <CardContent style={style.cardContent}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {card.ciudad + ", " + card.pais}
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {card.ciudad}
+                      </Typography>
+                      <Typography gutterBottom variant="h7" >
+                        {card.pais}
                       </Typography>
                     </CardContent>
 

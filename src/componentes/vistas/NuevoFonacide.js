@@ -139,7 +139,7 @@ class NuevoFonacide extends Component {
         .collection("Fonacides")
         .add(fonacide)
         .then(success => {
-          this.props.history.push("/");
+          this.props.history.push("/fonacide/eliminar");
         })
         .catch(error => {
           openMensajePantalla({

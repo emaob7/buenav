@@ -135,7 +135,7 @@ class NuevoInmueble extends Component {
         .collection("Inmuebles")
         .add(inmueble)
         .then(success => {
-          this.props.history.push("/");
+          this.props.history.push("/noticias/editar");
         })
         .catch(error => {
           openMensajePantalla({
@@ -171,7 +171,7 @@ class NuevoInmueble extends Component {
                 </Link>
                 <Typography color="primary"> Agregar Nueva Noticia</Typography>
               </Breadcrumbs>
-            </Grid>
+            
             
         
             <Grid container justify="left">
@@ -238,7 +238,7 @@ class NuevoInmueble extends Component {
             <Grid item xs={12} md={3}>
               <TextField
                 name="direccion"
-                type="datetime-local"
+                type="date"
                 variant="outlined"
                 fullWidth
                 InputLabelProps={{
@@ -249,22 +249,26 @@ class NuevoInmueble extends Component {
               />
             </Grid>
 
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={12}>
               <TextField
                 name="pais"
-                label="Categoria"
+                label="Primer Parrafo"
                 variant="outlined"
+                fullWidth
+                multiline
+                rows={2}
                 fullWidth
                 onChange={this.entraDatoEnEstado}
                 value={this.state.inmueble.pais}
               />
             </Grid>
     </Grid>
+    </Grid>
     
             <Grid  item xs={12} md={12} >
               <TextField
                 name="descripcion"
-                label="Descripcion"
+                label="Segundo parrafo y seguir"
                 variant="outlined"
                 multiline
                 rows={10}

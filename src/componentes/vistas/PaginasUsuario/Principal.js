@@ -37,6 +37,7 @@ paper: {
     breadcrumbs:{
       backgroundColor: "#fafafa",
       marginTop:2,
+      marginBottom:10,
       padding: "5px",
       color: "#fff"
     },
@@ -241,10 +242,11 @@ class Principal extends Component {
           </Grid>
           
       </Paper>
-      <Grid>
+      <Grid >
+        <div >
         
               <CustomSlider/>
-              
+              </div> 
           </Grid>
         <Paper style={style.paper}>
 
@@ -301,7 +303,13 @@ class Principal extends Component {
 
                     <CardContent style={style.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {card.ciudad + ", " + card.pais}
+                        {card.ciudad}
+                      </Typography>
+                      <Typography gutterBottom variant="caption">
+                        {"Publicado  " + card.direccion}
+                      </Typography> <br/>
+                      <Typography gutterBottom variant="h7" >
+                        {card.pais}
                       </Typography>
                     </CardContent>
 

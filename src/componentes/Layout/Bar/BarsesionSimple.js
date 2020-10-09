@@ -1,28 +1,25 @@
 import React, { Component } from "react";
 import {
   Toolbar,
-  Typography,
+  
   IconButton,
   Drawer,
-  Avatar,
-  Menu,
-  Container, Button
+   Button
 } from "@material-ui/core";
 import HomeIcon from '@material-ui/icons/Home';
 import { withStyles } from "@material-ui/core/styles";
 import { consumerFirebase } from "../../../server";
 import { compose } from "recompose";
 import { StateContext } from "../../../sesion/store";
-import { salirSesion } from "../../../sesion/actions/sesionAction";
 import { MenuDerecha } from "./menuDerecha";
 import { MenuIzquierda } from "./menuIzquierda";
-import fotoUsuarioTemp from "../../../logo.svg";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BotonInstitucion from "./botones/BotonInstitucion";
 import BotonTransparencia from "./botones/BotonTransparencia";
 import BotonCiudad from "./botones/BotonCiudad";
 import BotonServicios from "./botones/BotonServicios";
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 const styles = (theme) => ({
@@ -151,12 +148,14 @@ class BarSesionSimple extends Component {
           </div>
         </Drawer>
         <Toolbar>
+        <Tooltip title="Expandir Menu Lateral">
         <IconButton edge="start" className={classes.menuButton}
           style={{ color: '#757575' }}
           onClick={this.toggleDrawer("left",true)}>
             <i className="material-icons">menu</i>
           </IconButton>
-          
+          </Tooltip>
+          <Tooltip title="Ir a inicio">
         <Button
           variant="contained"
           startIcon={<HomeIcon/>}
@@ -167,6 +166,7 @@ class BarSesionSimple extends Component {
         >
           Municipalidad de Buena Vista
         </Button>
+        </Tooltip>
         <div className={classes.grow}></div>
 {/**Agregar una imagen cuanse pueda del logo */}
           <div className={classes.sectionDesktop}>
@@ -176,12 +176,14 @@ class BarSesionSimple extends Component {
         <BotonTransparencia/>
         <BotonCiudad/>
         <BotonServicios/>
+        <Tooltip title="Ingresar">
         <IconButton
               style={{ color: '#757575' }}
-              onClick={this.toggleDrawer("right", true)}
+              component={Link} button to="/auth/login"
             >
-              <i className="material-icons">more_vert</i>
+              <i className="material-icons">person</i>
             </IconButton>
+            </Tooltip>
           </div>
 
                  

@@ -20,14 +20,13 @@ export default class CustomSlider extends Component {
       dots: true,
       duration: 400,
       initialSlide: true,
-      overScan: 1,
       shift: 10
     };
     return (
       <div>
         
         <Slider { ...settings } >
-          <div>
+          <div >
             <img src ={baner1} style={style.foto}/>
           </div>
           <div>

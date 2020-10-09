@@ -9,6 +9,7 @@ import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { Link } from "react-router-dom";
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,6 +57,7 @@ export default function BotonCiudad() {
   return (
     <div className={classes.root}>
       
+      <Tooltip title="Click para expandir">
         <Button
           startIcon={<KeyboardArrowDownIcon/>}
           style={{ color: '#757575' }}
@@ -66,20 +68,21 @@ export default function BotonCiudad() {
         >
           Nuestra Ciudad
         </Button>
+        </Tooltip>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
               style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
             >
-              <Paper>
+              <Paper  >
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown} >
  {/*agregar botones o menus*/}
                     <MenuItem component={Link} button to="/historia" onClick={handleClose}>Historia</MenuItem>
                     <MenuItem component={Link} button to="/ubicacioninformacion" onClick={handleClose}>Ubicacion</MenuItem>
                     <MenuItem component={Link} button to="/mapa" onClick={handleClose}>Mapa</MenuItem>
-                    <MenuItem component={Link} button to="/galeria" onClick={handleClose}>Galeria Fotografica</MenuItem>
+                    <MenuItem component={Link} button to="/galeria" onClick={handleClose} >Galeria Fotografica</MenuItem>
                     
 {/*agregar botones o menus*/}
                   </MenuList>

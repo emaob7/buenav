@@ -9,6 +9,7 @@ import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { Link } from "react-router-dom";
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +56,7 @@ export default function BotonServicios() {
 
   return (
     <div className={classes.root}>
-      
+       <Tooltip title="Click para expandir">
         <Button
         startIcon={<KeyboardArrowDownIcon/>}
           style={{ color: '#757575' }}
@@ -66,6 +67,7 @@ export default function BotonServicios() {
         >
           Tramites y Servicios
         </Button>
+        </Tooltip>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow

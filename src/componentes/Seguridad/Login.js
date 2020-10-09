@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Avatar, Typography, TextField, Button, Grid, Link, Paper } from '@material-ui/core';
+import { Container, Avatar, Typography, TextField, Button,Paper } from '@material-ui/core';
 import LockOutlineIcon from "@material-ui/icons/LockOutlined";
 import { compose } from 'recompose';
 import { consumerFirebase } from '../../server';

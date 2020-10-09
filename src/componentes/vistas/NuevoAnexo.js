@@ -139,7 +139,7 @@ class NuevoAnexo extends Component {
         .collection("Anexos")
         .add(anexo)
         .then(success => {
-          this.props.history.push("/");
+          this.props.history.push("/anexo/eliminar");
         })
         .catch(error => {
           openMensajePantalla({

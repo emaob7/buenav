@@ -139,7 +139,7 @@ class NuevoRoyalti extends Component {
         .collection("Royaltis")
         .add(royalti)
         .then(success => {
-          this.props.history.push("/");
+          this.props.history.push("/royalti/eliminar");
         })
         .catch(error => {
           openMensajePantalla({
