@@ -116,7 +116,7 @@ class Intendente extends Component {
                 <Grid item xs={12} sm={12}>
             
             <Breadcrumbs aria-label="breadcrumbs">
-            <Link color="textSecondary" style={style.link} href="/" >
+            <Link color="inherit" style={style.link} href="/" >
                                     <HomeIcon style={style.icon} />
                                      Municipalidad de Buena Vista 
                                 </Link>

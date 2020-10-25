@@ -1,5 +1,6 @@
 import React from "react";
-import { List, Link,ListItemText, ListItem, Avatar,ListSubheader, Divider  } from "@material-ui/core";
+import { List,ListItemText, ListItem, Avatar,ListSubheader, Divider  } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export const MenuDerecha = ({
   classes,
@@ -44,7 +45,7 @@ export const MenuDerecha = ({
         <ListItemText
           classes={{ primary: classes.listItemText }}
           primary="Agregar Noticia"
-        />
+        /> 
               </ListItem>
               <ListItem component={Link} button to="/anexo/nuevo">
         <i className="material-icons">add_box</i>

@@ -97,7 +97,7 @@ export const MenuIzquierda = ({ classes }) => (
         <ListItemText
           classes={{ primary: classes.listItemText }}
           primary="Ubicación"
-        />
+        /> 
               </ListItem>
       <ListItem component={Link} button to="/mapa">
         <i className="material-icons">map</i>

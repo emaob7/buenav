@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Slider from 'infinite-react-carousel';
 import baner1 from  "../Imagenes/carrusel/baner1.jpg"
+import baner2 from  "../Imagenes/carrusel/baner2.jpg"
+import baner4 from  "../Imagenes/carrusel/baner4.jpg"
 
 const style={
   foto: {
@@ -30,10 +32,10 @@ export default class CustomSlider extends Component {
             <img src ={baner1} style={style.foto}/>
           </div>
           <div>
-            <img src ={baner1} style={style.foto}/>
+            <img src ={baner2} style={style.foto}/>
           </div>
           <div>
-            <img src ={baner1} style={style.foto}/>
+            <img src ={baner4} style={style.foto}/>
           </div>
         </Slider>
       </div>

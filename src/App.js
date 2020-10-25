@@ -52,6 +52,7 @@ import Fonacide from "./componentes/vistas/PaginasUsuario/Transparencia/Fonacide
 import Royalties from "./componentes/vistas/PaginasUsuario/Transparencia/Royalties";
 import Presupuestos from "./componentes/vistas/PaginasUsuario/Transparencia/Presupuestos";
 import Principal from "./componentes/vistas/PaginasUsuario/Principal";
+import membreteIn from  "../src/componentes/Imagenes/membrete/membreteIn.png";
 
 
 
@@ -105,6 +106,9 @@ function App(props) {
      
         <MuiThemeProvider theme={theme}>
           <div  className="App-header">
+            <div>
+            <img src ={membreteIn} />
+            </div>
           <AppNavBar />
           <AppNavBarSimple/>
           
