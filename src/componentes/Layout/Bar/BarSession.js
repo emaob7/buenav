@@ -17,7 +17,7 @@ import { MenuDerecha } from "./menuDerecha";
 import { MenuIzquierdaU } from "./menuIzquierdaU";
 import fotoUsuarioTemp from "../../../logo.svg";
 import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 
 
 const styles = (theme) => ({

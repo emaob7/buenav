@@ -21,12 +21,30 @@ import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 import { obtenerData, obtenerDataAnterior } from "../../../sesion/actions/InmuebleAction";
 import CustomSlider from "../CustomSlider";
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
+import InputBase from '@material-ui/core/InputBase';
 
 
 const style = {
   cardGrid: {
     paddingTop: 8,
     paddingBottom: 8
+  },
+  input: {
+    marginLeft: 1,
+    flex: 1,
+    paddingLeft: 13,
+  },
+  iconButton: {
+    padding: 10,
+  },
+  root: {
+    padding: '2px 4px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 335,
+    
   },
 paper: {
       backgroundColor: "#f5f5f5",
@@ -51,7 +69,7 @@ paper: {
   },
      div:{
         marginBottom: 22,
-        backgroundColor: "#0071bc",
+        backgroundColor: "#4dabf5",
         width : 80,
         height: 5,
       },
@@ -72,7 +90,9 @@ paper: {
     flexGrow: 1
   },
   barraBoton: {
-    marginTop: "20px"
+    margin: "18px",
+    paddingTop: "5%"
+  
   },
   
 };
@@ -250,37 +270,31 @@ class Principal extends Component {
           </Grid>
         <Paper style={style.paper}>
 
-                 <Typography  variant="h4"  color="textSecondary">
-          NOTICIAS
+                 <Typography  variant="h4"  color="inherit">
+          Obras y<br/>Actividades
         </Typography>
         <div style={style.div} ></div>
           <Grid item xs={12} sm={4} style={style.gridTextfield}>
-            <TextField
+          <Paper component="form" style={style.root}>
+          <IconButton type="submit" style={style.iconButton} aria-label="search">
+        <SearchIcon />
+      </IconButton>
+          <InputBase
+          style={style.input}
               fullWidth
-              InputLabelProps={{
-                shrink: true
-              }}
               name="textoBusqueda"
-              variant="outlined"
-              label="Buscar Noticias"
+              placeholder="Buscar obras y actividades"
+              
               onChange={this.cambiarBusquedaTexto}
               value={this.state.textoBusqueda}
             />
+
+          </Paper>
+
+            
           </Grid>
 
-          <Grid item xs={12} sm={12} style={style.barraBoton}>
-            <Grid container spacing={1} direction="column" alignItems="flex-end">
-                <ButtonGroup size="small" aria-label="Small outlined group">
-                    <Button onClick={this.anteriorPagina}>
-                      <ArrowLeft />
-                    </Button>
-                    <Button onClick={this.siguientePagina}>
-                      <ArrowRight />
-                    </Button>
-                </ButtonGroup>
-            </Grid>
-          </Grid>
-
+         
 
 
 
@@ -323,6 +337,19 @@ class Principal extends Component {
               ))}
             </Grid>
           </Grid>
+          <Grid item xs={12} sm={12} style={style.barraBoton}>
+            <Grid container spacing={1} direction="column" alignItems="flex-end">
+                <ButtonGroup size="small" aria-label="Small outlined group">
+                    <Button onClick={this.anteriorPagina}>
+                      <ArrowLeft />
+                    </Button>
+                    <Button onClick={this.siguientePagina}>
+                      <ArrowRight />
+                    </Button>
+                </ButtonGroup>
+            </Grid>
+          </Grid>
+
         </Paper>
       </Container>
     );

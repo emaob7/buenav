@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import Grid from "@material-ui/core/Grid";
-import { Snackbar } from "@material-ui/core";
+import {Snackbar } from "@material-ui/core";
 import "./App.css";
 import AppNavBar from "./componentes/Layout/AppNavBar";
 import AppNavBarSimple from "./componentes/Layout/AppNavBarSimple";
@@ -52,7 +52,7 @@ import Fonacide from "./componentes/vistas/PaginasUsuario/Transparencia/Fonacide
 import Royalties from "./componentes/vistas/PaginasUsuario/Transparencia/Royalties";
 import Presupuestos from "./componentes/vistas/PaginasUsuario/Transparencia/Presupuestos";
 import Principal from "./componentes/vistas/PaginasUsuario/Principal";
-import membreteIn from  "../src/componentes/Imagenes/membrete/membreteIn.png";
+
 
 
 
@@ -106,12 +106,11 @@ function App(props) {
      
         <MuiThemeProvider theme={theme}>
           <div  className="App-header">
-            <div>
-            <img src ={membreteIn} />
-            </div>
-          <AppNavBar />
-          <AppNavBarSimple/>
           
+          <AppNavBarSimple />
+          <AppNavBar />
+         
+
           
           
 

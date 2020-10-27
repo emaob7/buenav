@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
-
 import BarSesionSimple from "./Bar/BarSesionSimple";
 import { withStyles } from "@material-ui/styles";
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
@@ -8,8 +7,16 @@ import theme from "../theme/theme";
 import { compose, fromRenderProps } from "recompose";
 import { consumerFirebase } from "../../server";
 import { StateContext } from "../../sesion/store";
-//import { Toolbar } from "@material-ui/core";
+import membreteIn from  "../Imagenes/membrete/membreteIn.png";
+import { Link } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 
+const style={
+  foto: {
+    width: "100%",
+    height: "100%",
+  },
+}
 
 const styles = (theme) => ({
   sectionDesktop: {
@@ -24,6 +31,7 @@ const styles = (theme) => ({
       display: "none",
     },
   },
+ 
 });
 
 class AppNavBarSimple extends Component {
@@ -63,10 +71,17 @@ class AppNavBarSimple extends Component {
 
     return (
         <MuiThemeProvider theme= {theme}>
+          <Grid item xs={12} sm={5} md={5}>
+          <Link  to="/">
+           
+            <img  src ={membreteIn} style={style.foto} />
+           </Link>
+            </Grid>
+
       <div>
           
             
-        <AppBar position="sticky" style={{ background: '#fff' }}>
+        <AppBar position="relative" style={{ background: '#fff' }}>
         
             <BarSesionSimple >
 

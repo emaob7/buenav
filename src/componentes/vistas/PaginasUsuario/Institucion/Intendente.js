@@ -132,12 +132,13 @@ class Intendente extends Component {
             <Grid item  xs={12} sm={4} md={12}>
       <Paper style={style.paper}>
         <Typography  variant="h4"  color="textSecondary">
-          INTENDENTE MUNICIPAL
+          Intendente Municipal
         </Typography>
         <div style={style.div} ></div>
         <Grid container spacing={3}>
         <Grid item  xs={12} sm={4} md={12}>
           <div style={style.div2}>
+          
         <Card style={style.root}>
         <CardMedia
         style={style.cardMedia}

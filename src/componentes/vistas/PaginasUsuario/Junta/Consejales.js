@@ -75,7 +75,7 @@ export default class Consejales extends Component {
       </Paper>
       <Paper style={style.paper}>
         <Typography  variant="h4"  color="textSecondary">
-          CONSEJALES DE LA JUNTA MUNICIPAL
+          Consejales de la <br/> Honorable Junta Municipal
         </Typography>
         <div style={style.div} ></div>
         <Grid container spacing={3}>

@@ -5,6 +5,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,10 +26,10 @@ export default function ListaInstitucion() {
   return (
     <div className={classes.root}>
    
-   <Chip   icon={<EmojiPeopleIcon />} label="Intendente" component="a" href="/intendente" clickable />
-      <Chip   icon={<PeopleIcon />} label="Junta Municipal" component="a" href="/consejales" clickable />
-      <Chip   icon={<AccountTreeIcon />} label="Organigrama" component="a" href="/organigrama" clickable />
-      <Chip   icon={<LibraryBooksIcon />} label="Resoluciones Municipales" component="a" href="/resolucionesmuni" clickable />
+   <Chip   icon={<EmojiPeopleIcon />} label="Intendente" component={Link} button to="/intendente" clickable />
+      <Chip   icon={<PeopleIcon />} label="Junta Municipal" component={Link} button to="/consejales" clickable />
+      <Chip   icon={<AccountTreeIcon />} label="Organigrama" component={Link} button to="/organigrama" clickable />
+      <Chip   icon={<LibraryBooksIcon />} label="Resoluciones Municipales" component={Link} button to="/resolucionesmuni" clickable />
       
      
     </div>

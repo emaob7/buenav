@@ -6,6 +6,7 @@ import RoomIcon from '@material-ui/icons/Room';
 
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import BookIcon from '@material-ui/icons/Book';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,10 +27,10 @@ export default function ListaCiudad() {
   return (
     <div className={classes.root}>
    
-   <Chip   icon={<BookIcon />} label="Historia" component="a" href="/historia" clickable />
-      <Chip   icon={<RoomIcon />} label="Ubicación" component="a" href="/ubicacioninformacion" clickable />
-      <Chip   icon={<MapIcon />} label="Mapa" component="a" href="/mapa" clickable />
-      <Chip   icon={<PhotoLibraryIcon />} label="Galeria Fotografica" component="a" href="/galeria" clickable />
+   <Chip   icon={<BookIcon />} label="Historia" component={Link} button to="/historia" clickable />
+      <Chip   icon={<RoomIcon />} label="Ubicación" component={Link} button to="/ubicacioninformacion" clickable />
+      <Chip   icon={<MapIcon />} label="Mapa" component={Link} button to="/mapa" clickable />
+      <Chip   icon={<PhotoLibraryIcon />} label="Galeria Fotografica" component={Link} button to="/galeria" clickable />
       
      
     </div>

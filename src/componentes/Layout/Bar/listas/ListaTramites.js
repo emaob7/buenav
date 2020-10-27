@@ -6,6 +6,7 @@ import CommuteIcon from '@material-ui/icons/Commute';
 
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import PaymentIcon from '@material-ui/icons/Payment';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,10 +27,10 @@ export default function ListaTramites() {
   return (
     <div className={classes.root}>
    
-   <Chip   icon={<ContactMailIcon />} label="Registro de conducir" component="a" href="/licencia" clickable />
-      <Chip   icon={<PaymentIcon />} label="Habilitacion vehicular" component="a" href="/habilitacion" clickable />
-      <Chip   icon={<PaymentIcon />} label="Habilitacion Motocicletas" component="a" href="/motocicleta" clickable />
-      <Chip   icon={<CommuteIcon />} label="Autoescuela" component="a" href="/autoescuela" clickable />
+   <Chip   icon={<ContactMailIcon />} label="Registro de conducir" component={Link} button to="/licencia" clickable />
+      <Chip   icon={<PaymentIcon />} label="Habilitacion vehicular" component={Link} button to="/habilitacion" clickable />
+      <Chip   icon={<PaymentIcon />} label="Habilitacion Motocicletas" component={Link} button to="/motocicleta" clickable />
+      <Chip   icon={<CommuteIcon />} label="Autoescuela" component={Link} button to="/autoescuela" clickable />
       
      
     </div>

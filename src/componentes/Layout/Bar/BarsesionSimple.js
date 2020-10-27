@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import {
   Toolbar,
-  
   IconButton,
   Drawer,
-   Button
+   Button,
 } from "@material-ui/core";
 import HomeIcon from '@material-ui/icons/Home';
 import { withStyles } from "@material-ui/core/styles";
@@ -189,14 +188,16 @@ class BarSesionSimple extends Component {
                  
           <div className={classes.sectionMobile}>
 {/* seccion para menu listas, Mobile */}
-
-
-            <IconButton
+<Tooltip title="Ingresar">
+        <IconButton
               style={{ color: '#757575' }}
-              onClick={this.toggleDrawer("right", true)}
+              component={Link} button to="/auth/login"
             >
-              <i className="material-icons">more_vert</i>
+              <i className="material-icons">person</i>
             </IconButton>
+            </Tooltip>
+
+          
           </div>
         </Toolbar>
       </div>

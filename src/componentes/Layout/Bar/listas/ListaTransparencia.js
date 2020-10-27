@@ -6,6 +6,7 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import BallotIcon from '@material-ui/icons/Ballot';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,10 +27,10 @@ export default function ListaTransparencia() {
   return (
     <div className={classes.root}>
    
-   <Chip   icon={<AssignmentIndIcon />} label="Nomina de funcionarios" component="a" href="/anexopersonal" clickable />
-      <Chip   icon={<AssignmentIcon />} label="Royalties" component="a" href="/royalties" clickable />
-      <Chip   icon={<AssignmentIcon />} label="Fonacide" component="a" href="/fonacide" clickable />
-      <Chip   icon={<BallotIcon />} label="Inventario" component="a" href="/inventario" clickable />
+   <Chip   icon={<AssignmentIndIcon />} label="Nomina de funcionarios" component={Link} button to="/anexopersonal" clickable />
+      <Chip   icon={<AssignmentIcon />} label="Royalties" component={Link} button to="/royalties" clickable />
+      <Chip   icon={<AssignmentIcon />} label="Fonacide" component={Link} button to="/fonacide" clickable />
+      <Chip   icon={<BallotIcon />} label="Inventario" component={Link} button to="/inventario" clickable />
       
      
     </div>
