@@ -3,9 +3,36 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
+import PhoneIcon from '@material-ui/icons/Phone';
+import { Grid } from '@material-ui/core';
+import LanguageIcon from '@material-ui/icons/Language';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+
+const style = {
+
+
+    icon:{
+    marginRight: 0.5,
+    width: 20,
+    height: 20,
+  },
+    link: {
+    display: "flex"
+  },
+
+
+  
+};
+
 
 function Copyright() {
   return (
+    <div>
+     
     <Typography variant="body2" color="textSecondary">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
@@ -14,6 +41,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
+    </div>
   );
 }
 
@@ -40,8 +68,63 @@ export default function StickyFooter() {
 
   return (
     <div className={classes.root}>
+       <footer className={classes.footer}>
+ <Grid container spacing={2}>
+     <Grid item xs={12} sm={5} md={5}>
+                
+      <Typography style={style.link}  variant="body1">
+                                    <LanguageIcon style={style.icon} />
+                                    Página Web Oficial del Gobierno Municipal de Buena Vista
 
-      <footer className={classes.footer}>
+                                </Typography>
+                                <Typography style={style.link}  variant="caption">
+                                    
+                                    Página Oficial del Gobierno Municipal de Buena Vista
+Publicación de actividades oficiales, culturales, deportivos y sociales promovidas por la Municipalidad de Buena Vista. 
+
+                                </Typography>
+                             
+
+      </Grid>
+      <Grid item xs={12} sm={4} md={4}>
+                
+      <Typography  variant="body1">
+                                    <AccessTimeIcon style={style.icon} />
+                                     Abierto: Lunes a viernes, 07:00 - 13:00 hs. 
+                                </Typography>
+                                <Link style={style.link} color="inherit" variant="body1" to="chart" target="_blank" href="mailto:munibuena@gmail.com">
+                                    <AlternateEmailIcon style={style.icon} />
+                                    munibuena@gmail.com 
+                                </Link> 
+           
+                                <Link style={style.link} color="inherit" variant="body1"  href="tel:0213382413">
+                                    <PhoneIcon style={style.icon} />
+                                     Telefono: (021) 338 2413
+
+                                </Link>
+                             
+
+      </Grid>
+      <Grid item xs={12} sm={3} md={3}>
+                
+      <Link style={style.link} color="inherit" variant="body1" to="chart" target="_blank" href="https://www.facebook.com/munibuena">
+                                    <FacebookIcon  style={style.icon} />
+                                     Facebook
+                                </Link>
+            <Link style={style.link} color="inherit"  variant="body1" to="chart" target="_blank" href="">
+                                    <TwitterIcon style={style.icon} />
+                                    Twitter
+                                </Link> 
+           
+            <Link style={style.link} color="inherit" variant="body1" to="chart" target="_blank" href="">
+                                    <InstagramIcon style={style.icon} />
+                                     Instagram
+                                </Link>
+                             
+
+      </Grid>
+      </Grid>
+
         <Container maxWidth="sm">
           <Typography variant="body1">Esta webApp fue desarrollado por EmmanuelCompany</Typography>
           <Copyright />

@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import {v4 as uuidv4} from "uuid";
 import { crearKeyword } from '../../sesion/actions/Keyword';
+
 const style={
     container: {
         paddingTop : "8px"
@@ -120,7 +121,7 @@ class VerMasNoticias extends Component {
                                 </Link>
                                 <Link color="inherit" style={style.link} href="/intendente" >
                                     <FiberNewIcon style={style.icon} />
-                                     Noticias
+                                     Actividades
                                 </Link>
                                
                             </Breadcrumbs>

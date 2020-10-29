@@ -15,7 +15,7 @@ const style={
     paddingBottom: 8
   },
     paper: {
-      backgroundColor: "#f5f5f5",
+      backgroundColor: "#eeeeee",
       padding: "20px",
       minHeight: 650,
       marginTop:8
@@ -57,6 +57,7 @@ const style={
       backgroundColor: "#fafafa",
       marginTop:2,
       padding: "5px",
+      marginBottom: "15px",
       color: "#fff"
     },
     icon:{
@@ -130,19 +131,24 @@ class Intendente extends Component {
       
       <Grid container spacing={3}>
             <Grid item  xs={12} sm={4} md={12}>
-      <Paper style={style.paper}>
-        <Typography  variant="h4"  color="textSecondary">
-          Intendente Municipal
+            <Typography  variant="h4"  color="textSecondary">
+          Intendente <br/> Municipal
         </Typography>
         <div style={style.div} ></div>
-        <Grid container spacing={3}>
+      <Paper style={style.paper}>
+
+        <Grid container spacing={3} 
+  
+  direction="column"
+  alignItems="center"
+  >
         <Grid item  xs={12} sm={4} md={12}>
           <div style={style.div2}>
           
         <Card style={style.root}>
         <CardMedia
         style={style.cardMedia}
-          title="consejal"
+          title="Intendente"
           image={fotoIn}
         />
         <CardContent>

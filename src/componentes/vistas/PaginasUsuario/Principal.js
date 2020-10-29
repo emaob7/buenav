@@ -4,17 +4,15 @@ import {
   Container,
   Paper,
   Grid,
-  Breadcrumbs,
-  Link,
   Typography,
-  TextField,
   CardMedia,
   Card,
   CardContent,
   CardActions,
-  ButtonGroup
+  ButtonGroup,
+  Divider,
+  Tooltip
 } from "@material-ui/core";
-import HomeIcon from "@material-ui/icons/Home";
 import { consumerFirebase } from "../../../server";
 import logo from "../../../logo.svg";
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
@@ -24,6 +22,7 @@ import CustomSlider from "../CustomSlider";
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
+
 
 
 const style = {
@@ -53,11 +52,11 @@ paper: {
       marginTop:8
     },
     breadcrumbs:{
-      backgroundColor: "#fafafa",
+      backgroundColor: "#152549",
       marginTop:2,
       marginBottom:10,
       padding: "5px",
-      color: "#fff"
+      
     },
     icon:{
     marginRight: 0.5,
@@ -65,7 +64,8 @@ paper: {
     height: 20,
   },
     link: {
-    display: "flex"
+    display: "flex",
+    color: "#fff"
   },
      div:{
         marginBottom: 22,
@@ -250,24 +250,15 @@ class Principal extends Component {
   render() {
     return (
       <Container style={style.cardGrid}>
-      <Paper style={style.breadcrumbs}>
-                <Grid item xs={12} sm={12}>
-            <Breadcrumbs aria-label="breadcrumbs">
-            <Link color="textSecondary" style={style.link} href="/" >
-                                    <HomeIcon style={style.icon} />
-                                     Municipalidad de Buena Vista / 
-                                </Link>
-              
-            </Breadcrumbs>
-          </Grid>
-          
-      </Paper>
+ 
       <Grid >
         <div >
         
               <CustomSlider/>
               </div> 
           </Grid>
+
+      
         <Paper style={style.paper}>
 
                  <Typography  variant="h4"  color="inherit">
@@ -312,7 +303,7 @@ class Principal extends Component {
                             : logo
                           : logo
                       }
-                      title="Mi Inmueble"
+                      
                     />
 
                     <CardContent style={style.cardContent}>
@@ -340,12 +331,16 @@ class Principal extends Component {
           <Grid item xs={12} sm={12} style={style.barraBoton}>
             <Grid container spacing={1} direction="column" alignItems="flex-end">
                 <ButtonGroup size="small" aria-label="Small outlined group">
+                <Tooltip title="Anterior">
                     <Button onClick={this.anteriorPagina}>
                       <ArrowLeft />
                     </Button>
+                    </Tooltip>
+                    <Tooltip title="Siguiente">
                     <Button onClick={this.siguientePagina}>
                       <ArrowRight />
                     </Button>
+                    </Tooltip>
                 </ButtonGroup>
             </Grid>
           </Grid>

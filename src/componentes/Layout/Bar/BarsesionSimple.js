@@ -5,7 +5,6 @@ import {
   Drawer,
    Button,
 } from "@material-ui/core";
-import HomeIcon from '@material-ui/icons/Home';
 import { withStyles } from "@material-ui/core/styles";
 import { consumerFirebase } from "../../../server";
 import { compose } from "recompose";
@@ -19,7 +18,15 @@ import BotonTransparencia from "./botones/BotonTransparencia";
 import BotonCiudad from "./botones/BotonCiudad";
 import BotonServicios from "./botones/BotonServicios";
 import Tooltip from '@material-ui/core/Tooltip';
+import membreteIn from  "../../Imagenes/membrete/membreteIn.png";
+import Grid from "@material-ui/core/Grid";
 
+const style={
+  foto: {
+    width: "50%",
+    height: "50%",
+  },
+}
 
 const styles = (theme) => ({
   sectionDesktop: {
@@ -155,16 +162,12 @@ class BarSesionSimple extends Component {
           </IconButton>
           </Tooltip>
           <Tooltip title="Ir a inicio">
-        <Button
-          variant="contained"
-          startIcon={<HomeIcon/>}
-          color="Primary"
-          aria-haspopup="true"
-          component={Link} 
-          button to="/"
-        >
-          Municipalidad de Buena Vista
-        </Button>
+          <Grid item xs={12} sm={5} md={5}>
+          <Link  to="/">
+           
+            <img  src ={membreteIn} style={style.foto} />
+           </Link>
+            </Grid>
         </Tooltip>
         <div className={classes.grow}></div>
 {/**Agregar una imagen cuanse pueda del logo */}

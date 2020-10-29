@@ -52,6 +52,7 @@ import Fonacide from "./componentes/vistas/PaginasUsuario/Transparencia/Fonacide
 import Royalties from "./componentes/vistas/PaginasUsuario/Transparencia/Royalties";
 import Presupuestos from "./componentes/vistas/PaginasUsuario/Transparencia/Presupuestos";
 import Principal from "./componentes/vistas/PaginasUsuario/Principal";
+import Scroll from "./componentes/Layout/Scroll";
 
 
 
@@ -109,7 +110,7 @@ function App(props) {
           
           <AppNavBarSimple />
           <AppNavBar />
-         
+         <Scroll showBelow={250}/>
 
           
           
