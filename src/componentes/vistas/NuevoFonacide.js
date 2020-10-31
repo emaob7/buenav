@@ -22,6 +22,7 @@ import { openMensajePantalla } from "../../sesion/actions/snackbarAction";
 import ImageUploader from "react-images-upload";
 import {v4 as uuidv4} from "uuid";
 import { crearKeyword } from "../../sesion/actions/Keyword";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const style = {
   container: {
@@ -82,7 +83,8 @@ class NuevoFonacide extends Component {
       ano: "",
      
       
-      fotos: []
+      fotos: [],
+      loading: false
     },
     archivos: []
   };
@@ -107,7 +109,10 @@ class NuevoFonacide extends Component {
 
   guardarFonacide = () => {
     const { archivos, fonacide } = this.state;
-
+    this.setState({ loading: true });
+    setTimeout(() => {
+        this.setState({ loading: false });
+      }, 8000);
     //Crearle a cada image(archivo) un alias, ese alias es la referencia con la cual posteriormente lo invocaras
     //Ademas ese alias sera almacenado en la base de datos(firestore/firebase)
 
@@ -162,7 +167,7 @@ class NuevoFonacide extends Component {
 
   render() {
     let imagenKey = uuidv4();
-
+    const { loading } = this.state;
     return (
       <Container style={style.container}>
               <Paper style={style.breadcrumbs}>
@@ -245,6 +250,9 @@ class NuevoFonacide extends Component {
                 onChange={this.entraDatoEnEstado}
                 value={this.state.fonacide.nombre}
               />
+              {loading && (
+            <LinearProgress style={style.load} />
+          )}
             </Grid>
 
             <Grid item xs={12} md={3}>
@@ -256,6 +264,9 @@ class NuevoFonacide extends Component {
                 onChange={this.entraDatoEnEstado}
                 value={this.state.fonacide.mes}
               />
+              {loading && (
+            <LinearProgress style={style.load} />
+          )}
             </Grid>
 
                 <Grid item xs={12} md={3}>
@@ -267,6 +278,9 @@ class NuevoFonacide extends Component {
                 onChange={this.entraDatoEnEstado}
                 value={this.state.fonacide.ano}
               />
+              {loading && (
+            <LinearProgress style={style.load} />
+          )}
             </Grid>
     </Grid>
             

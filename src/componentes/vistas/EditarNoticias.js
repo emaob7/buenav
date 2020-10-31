@@ -4,8 +4,6 @@ import {
   Container,
   Paper,
   Grid,
-  Breadcrumbs,
-  Link,
   Typography,
   TextField,
   CardMedia,
@@ -14,7 +12,6 @@ import {
   CardActions,
   ButtonGroup
 } from "@material-ui/core";
-import MuseumIcon from "@material-ui/icons/Museum";
 import { consumerFirebase } from "../../server";
 import logo from "../../logo.svg";
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
@@ -32,9 +29,7 @@ const style = {
     padding: "20px",
     minHeight: 650
   },
-  link: {
-    display: "flex"
-  },
+  
   gridTextfield: {
     marginTop: "20px",
     marginBottom: "-20px"
@@ -210,13 +205,7 @@ class EditarNoticias extends Component {
       <Container style={style.cardGrid}>
         <Paper style={style.paper}>
           <Grid item xs={12} sm={12}>
-            <Breadcrumbs aria-label="breadcrumbs">
-            <Link color="Primary" style={style.link} href="/" >
-                                    <MuseumIcon style={style.homeIcon} />
-                                    Municipalidad Buena Vista
-                                </Link>
-              
-            </Breadcrumbs>
+           
           </Grid>
           <Typography variant="h5">
             Obras y Actividades - (EDITAR / ELIMINAR)

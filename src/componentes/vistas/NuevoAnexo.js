@@ -22,6 +22,7 @@ import { openMensajePantalla } from "../../sesion/actions/snackbarAction";
 import ImageUploader from "react-images-upload";
 import {v4 as uuidv4} from "uuid";
 import { crearKeyword } from "../../sesion/actions/Keyword";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const style = {
   container: {
@@ -72,6 +73,9 @@ const style = {
   input: {
     display: 'none',
   },
+  load:{
+    backgroundColor: "#4dabf5"
+}
 };
 
 class NuevoAnexo extends Component {
@@ -80,7 +84,7 @@ class NuevoAnexo extends Component {
       mes: "",
       nombre: "",
       ano: "",
-     
+      loading: false,
       
       fotos: []
     },
@@ -107,7 +111,10 @@ class NuevoAnexo extends Component {
 
   guardarAnexo = () => {
     const { archivos, anexo } = this.state;
-
+    this.setState({ loading: true });
+    setTimeout(() => {
+        this.setState({ loading: false });
+      }, 8000);
     //Crearle a cada image(archivo) un alias, ese alias es la referencia con la cual posteriormente lo invocaras
     //Ademas ese alias sera almacenado en la base de datos(firestore/firebase)
 
@@ -162,7 +169,7 @@ class NuevoAnexo extends Component {
 
   render() {
     let imagenKey = uuidv4();
-
+    const { loading } = this.state;
     return (
       <Container style={style.container}>
               <Paper style={style.breadcrumbs}>
@@ -245,6 +252,9 @@ class NuevoAnexo extends Component {
                 onChange={this.entraDatoEnEstado}
                 value={this.state.anexo.nombre}
               />
+               {loading && (
+            <LinearProgress style={style.load} />
+          )}
             </Grid>
 
             <Grid item xs={12} md={3}>
@@ -256,6 +266,9 @@ class NuevoAnexo extends Component {
                 onChange={this.entraDatoEnEstado}
                 value={this.state.anexo.mes}
               />
+               {loading && (
+            <LinearProgress style={style.load} />
+          )}
             </Grid>
 
                 <Grid item xs={12} md={3}>
@@ -267,6 +280,9 @@ class NuevoAnexo extends Component {
                 onChange={this.entraDatoEnEstado}
                 value={this.state.anexo.ano}
               />
+ {loading && (
+            <LinearProgress style={style.load} />
+          )}
             </Grid>
     </Grid>
             

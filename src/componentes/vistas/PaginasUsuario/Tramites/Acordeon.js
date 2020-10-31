@@ -39,7 +39,7 @@ export default function ControlledAccordions() {
         <AccordionDetails>
         
           <Typography>
-                  
+          <b> REQUISITOS</b> <br/>
 1 - Formulario declaración jurada, estampillas.<br/>
 2 - Presentar cédula de identidad original y fotocopia autenticada.<br/>
 3 - Presentar comprobante de grupo sanguíneo (original y fotocopia autenticada).<br/>
@@ -63,6 +63,7 @@ export default function ControlledAccordions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
+          <b> REQUISITOS</b> <br/>
 1 - Haber cumplido 18 años de edad.<br/>
 2 - Formulario declaración jurada, estampillas.<br/>
 3 - Presentar cédula de identidad original y fotocopia autenticada.<br/>
@@ -85,6 +86,7 @@ export default function ControlledAccordions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
+          <b> REQUISITOS</b> <br/>
 1 - Formulario declaración jurada, estampillas.<br/>
 2 - Presentar cédula de identidad original y fotocopia autenticada.<br/>
 3 - Deberá presentar pasaporte original vigente y carnet de admisión permanente, extendido por migraciones, copia autenticada.<br/>
@@ -107,6 +109,7 @@ Todos los requisitos exigidos en la Categoría Particular, exceptuando la cédul
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
+          <b> REQUISITOS</b> <br/>
 1 - Haber cumplido 20 años .<br/>
 2 - Formulario declaración jurada, estampillas.<br/>
 3 - Presentar cédula de identidad original y fotocopia autenticada.<br/>
@@ -131,7 +134,7 @@ Para operar maquinarias pesadas y tractores.
         <AccordionDetails>
         
           <Typography>
-                  
+          <b> REQUISITOS</b> <br/>                   
 1 - Haber cumplido 20 años .<br/>
 2 - Formulario declaración jurada, estampillas.<br/>
 3 - Presentar cédula de identidad original y fotocopia autenticada.<br/>
@@ -158,7 +161,7 @@ Para operar maquinarias pesadas y tractores.
         <AccordionDetails>
         
           <Typography>
-                  
+          <b> REQUISITOS</b> <br/>                   
 1 - Haber cumplido 22 años de edad.<br/>
 2 - Formulario declaración jurada, estampillas.<br/>
 3 - Presentar cédula de identidad original y fotocopia autenticada.<br/>
@@ -187,7 +190,7 @@ Para operar maquinarias pesadas y tractores.
         <AccordionDetails>
         
           <Typography>
-                  
+          <b> REQUISITOS</b> <br/>                  
 1 - Ser poseedor de una antigüedad mínima de dos años de la Licencia de Conducir de la categoría clase “B” Superior y clase “B”.<br/>
 2 - Haber cumplido 22 años de edad.<br/>
 3 - Formulario declaración jurada, estampillas.<br/>
@@ -215,7 +218,7 @@ Para operar maquinarias pesadas y tractores.
         <AccordionDetails>
         
           <Typography>
-                  
+          <b> REQUISITOS</b> <br/>                 
 1 - Ser poseedor con una antigüedad mínima de un año, de la Licencias de Conducir de la Categoría “A”.<br/>
 2 - Haber cumplido 25 años de edad.<br/>
 3 - Formulario declaración jurada, estampillas.<br/>

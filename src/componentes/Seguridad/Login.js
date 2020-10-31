@@ -5,6 +5,7 @@ import { compose } from 'recompose';
 import { consumerFirebase } from '../../server';
 import  {iniciarSesion} from '../../sesion/actions/sesionAction';
 import {openMensajePantalla} from '../../sesion/actions/snackbarAction';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import {StateContext } from '../../sesion/store';
 
@@ -28,7 +29,11 @@ const style={
     submit: {
         marginTop: 10,
         marginBottom: 20
+    },
+    load:{
+        backgroundColor: "#4dabf5"
     }
+
     
 }
 
@@ -40,9 +45,15 @@ class Login extends Component {
         firebase: null,
         usuario : {
             email : '',
-            password: ''
+            password: '',
+            loading: false
         }
     }
+
+    //
+
+
+      //
 
     static getDerivedStateFromProps(nextProps, prevState){
 
@@ -55,6 +66,8 @@ class Login extends Component {
         }
     }
 
+    
+
     onChange = e =>{
         let usuario = Object.assign({},this.state.usuario);
         usuario[e.target.name] = e.target.value;
@@ -65,6 +78,12 @@ class Login extends Component {
 
     login = async e =>{
         e.preventDefault();
+        //
+        this.setState({ loading: true });
+        setTimeout(() => {
+            this.setState({ loading: false });
+          }, 8000);
+//
         const  [{sesion}, dispatch] = this.context;
         const {firebase, usuario} = this.state;
         const {email, password} = usuario;
@@ -104,8 +123,11 @@ class Login extends Component {
 
 
     render() {
+        const { loading } = this.state;
+
         return (
            <Container maxWidth="xs">
+              
               <Paper style={style.paper}>
                <div >
                     <Avatar style={style.avatar}>
@@ -134,6 +156,9 @@ class Login extends Component {
                             onChange = {this.onChange}
                             value = {this.state.usuario.password}
                          />
+                          {loading && (
+            <LinearProgress style={style.load} />
+          )}
                          <Button
                          type="submit"
                          fullWidth
@@ -145,10 +170,12 @@ class Login extends Component {
                              Ingresar
                          </Button>
 
-
+                         
+                        
                     </form>
 
                </div>
+                
                </Paper>
            </Container>
         );

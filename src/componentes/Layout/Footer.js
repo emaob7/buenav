@@ -88,16 +88,20 @@ Publicación de actividades oficiales, culturales, deportivos y sociales promovi
       </Grid>
       <Grid item xs={12} sm={4} md={4}>
                 
-      <Typography  variant="body1">
+     
+      <Typography style={style.link}  variant="body1">
+        Información
+        </Typography>
+      <Typography  variant="body2">
                                     <AccessTimeIcon style={style.icon} />
                                      Abierto: Lunes a viernes, 07:00 - 13:00 hs. 
                                 </Typography>
-                                <Link style={style.link} color="inherit" variant="body1" to="chart" target="_blank" href="mailto:munibuena@gmail.com">
+                                <Link style={style.link} color="inherit" variant="body2" to="chart" target="_blank" href="mailto:munibuena@gmail.com">
                                     <AlternateEmailIcon style={style.icon} />
                                     munibuena@gmail.com 
                                 </Link> 
            
-                                <Link style={style.link} color="inherit" variant="body1"  href="tel:0213382413">
+                                <Link style={style.link} color="inherit" variant="body2"  href="tel:0213382413">
                                     <PhoneIcon style={style.icon} />
                                      Telefono: (021) 338 2413
 
@@ -106,17 +110,19 @@ Publicación de actividades oficiales, culturales, deportivos y sociales promovi
 
       </Grid>
       <Grid item xs={12} sm={3} md={3}>
-                
-      <Link style={style.link} color="inherit" variant="body1" to="chart" target="_blank" href="https://www.facebook.com/munibuena">
+      <Typography style={style.link}  variant="body1">
+        Redes Sociales
+        </Typography>
+      <Link style={style.link} color="inherit" variant="body2" to="chart" target="_blank" href="https://www.facebook.com/munibuena">
                                     <FacebookIcon  style={style.icon} />
                                      Facebook
                                 </Link>
-            <Link style={style.link} color="inherit"  variant="body1" to="chart" target="_blank" href="">
+            <Link style={style.link} color="inherit"  variant="body2" to="chart" target="_blank" href="">
                                     <TwitterIcon style={style.icon} />
                                     Twitter
                                 </Link> 
            
-            <Link style={style.link} color="inherit" variant="body1" to="chart" target="_blank" href="">
+            <Link style={style.link} color="inherit" variant="body2" to="chart" target="_blank" href="">
                                     <InstagramIcon style={style.icon} />
                                      Instagram
                                 </Link>

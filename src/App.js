@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Grid from "@material-ui/core/Grid";
 import {Snackbar } from "@material-ui/core";
-import "./App.css";
 import AppNavBar from "./componentes/Layout/AppNavBar";
 import AppNavBarSimple from "./componentes/Layout/AppNavBarSimple";
 import Footer from "./componentes/Layout/Footer";
@@ -75,6 +74,7 @@ function App(props) {
   return autenticacionIniciada !== false ? (
     
    <React.Fragment >
+      <div  className="App-header">
       <Snackbar>
         anchorOrigin = {{ vertical: "bottom", horizontal: "center" }}
         open ={openSnackbar ? openSnackbar.open : false}
@@ -106,7 +106,7 @@ function App(props) {
       
      
         <MuiThemeProvider theme={theme}>
-          <div  className="App-header">
+          
           
           <AppNavBarSimple />
           <AppNavBar />
@@ -323,10 +323,12 @@ function App(props) {
               <Route path="/auth/LoginTelefono" exact component={LoginTelefono}></Route>
             </Switch>
           </Grid>
-          </div>
+         
         </MuiThemeProvider>
       </Router>
+
       <Footer/>
+      </div>
     </React.Fragment>
     
   ) : null;

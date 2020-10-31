@@ -10,8 +10,9 @@ import {
   CardContent,
   CardActions,
   ButtonGroup,
-  Divider,
-  Tooltip
+  Tooltip,
+  Chip,
+  Hidden
 } from "@material-ui/core";
 import { consumerFirebase } from "../../../server";
 import logo from "../../../logo.svg";
@@ -22,6 +23,9 @@ import CustomSlider from "../CustomSlider";
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
+import PhoneIcon from '@material-ui/icons/Phone';
+import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
+
 
 
 
@@ -58,6 +62,7 @@ paper: {
       padding: "5px",
       
     },
+
     icon:{
     marginRight: 0.5,
     width: 20,
@@ -67,12 +72,7 @@ paper: {
     display: "flex",
     color: "#fff"
   },
-     div:{
-        marginBottom: 22,
-        backgroundColor: "#4dabf5",
-        width : 80,
-        height: 5,
-      },
+     
 
   gridTextfield: {
     marginTop: "20px",
@@ -92,6 +92,12 @@ paper: {
   barraBoton: {
     margin: "18px",
     paddingTop: "5%"
+  
+  },
+  chips: {
+    margin: "3px",
+    padding: "3%",
+    marginBottom: "16px",
   
   },
   
@@ -257,14 +263,19 @@ class Principal extends Component {
               <CustomSlider/>
               </div> 
           </Grid>
+          
+          <Hidden mdUp>
+          <Chip style={style.chips}  icon={<PhoneIcon />} label="Llamanos (Linea alta)" component="a" href="tel:0213382413" clickable />
+          <Chip style={style.chips}  icon={<AlternateEmailIcon />} label="Envianos un email" component="a" href="mailto:munibuena@gmail.com" clickable />
+          </Hidden>
 
       
-        <Paper style={style.paper}>
+        <Paper style={style.paper} >
 
-                 <Typography  variant="h4"  color="inherit">
+                 <Typography  variant="h4"  color="inherit" >
           Obras y<br/>Actividades
         </Typography>
-        <div style={style.div} ></div>
+        
           <Grid item xs={12} sm={4} style={style.gridTextfield}>
           <Paper component="form" style={style.root}>
           <IconButton type="submit" style={style.iconButton} aria-label="search">
@@ -275,7 +286,6 @@ class Principal extends Component {
               fullWidth
               name="textoBusqueda"
               placeholder="Buscar obras y actividades"
-              
               onChange={this.cambiarBusquedaTexto}
               value={this.state.textoBusqueda}
             />

@@ -13,7 +13,6 @@ import {
   TableRow,
   TableCell
 } from "@material-ui/core";
-import IconButton from '@material-ui/core/IconButton';
 import MuseumIcon from '@material-ui/icons/Museum';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
@@ -22,11 +21,15 @@ import { openMensajePantalla } from "../../sesion/actions/snackbarAction";
 import ImageUploader from "react-images-upload";
 import {v4 as uuidv4} from "uuid";
 import { crearKeyword } from "../../sesion/actions/Keyword";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const style = {
   container: {
     paddingTop: "8px"
   },
+  load:{
+    backgroundColor: "#4dabf5"
+},
   paper: {
     marginTop: 8,
     display: "flex",
@@ -78,7 +81,8 @@ class NuevoInmueble extends Component {
       pais: "",
       descripcion: "",
       
-      fotos: []
+      fotos: [],
+      loading: false
     },
     archivos: []
   };
@@ -103,7 +107,10 @@ class NuevoInmueble extends Component {
 
   guardarInmueble = () => {
     const { archivos, inmueble } = this.state;
-
+    this.setState({ loading: true });
+    setTimeout(() => {
+        this.setState({ loading: false });
+      }, 8000);
     //Crearle a cada image(archivo) un alias, ese alias es la referencia con la cual posteriormente lo invocaras
     //Ademas ese alias sera almacenado en la base de datos(firestore/firebase)
 
@@ -158,7 +165,7 @@ class NuevoInmueble extends Component {
 
   render() {
     let imagenKey = uuidv4();
-
+    const { loading } = this.state;
     return (
       <Container style={style.container}>
         <Paper style={style.paper}>
@@ -169,9 +176,9 @@ class NuevoInmueble extends Component {
                   <MuseumIcon style={style.homeIcon} />
                   Municipalidad Buena Vista
                 </Link>
-                <Typography color="primary"> Agregar Nueva Noticia</Typography>
+                <Link color="primary"> Agregar Nueva Noticia</Link>
               </Breadcrumbs>
-            
+              
             
         
             <Grid container justify="left">
@@ -276,14 +283,19 @@ class NuevoInmueble extends Component {
                 onChange={this.entraDatoEnEstado}
                 value={this.state.inmueble.descripcion}
               />
+              {loading && (
+            <LinearProgress style={style.load}/>
+          )}
             </Grid>
 
            
           </Grid>
 
-         
+          
           <Grid container spacing={3} justify="center">
-            <Grid item xs={12} md={6}>
+         
+            <Grid item xs={12} sm={5} md={4}>
+            
               <Button
                 type="button"
                 fullWidth
@@ -296,12 +308,17 @@ class NuevoInmueble extends Component {
               >
                 Guardar y Publicar
               </Button>
+             
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+
+            <Grid item xs={12} sm={5} md={4}>
                         <Button  variant="contained" href="/" color="secondary" fullWidth style={style.submit} size="large">Cancelar</Button>
                         </Grid>
           </Grid>
+          
         </Paper>
+        
+
       </Container>
     );
   }

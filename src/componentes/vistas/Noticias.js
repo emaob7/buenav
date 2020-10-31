@@ -4,8 +4,6 @@ import {
   Container,
   Paper,
   Grid,
-  Breadcrumbs,
-  Link,
   Typography,
   TextField,
   CardMedia,
@@ -14,7 +12,6 @@ import {
   CardActions,
   ButtonGroup
 } from "@material-ui/core";
-import HomeIcon from "@material-ui/icons/Home";
 import { consumerFirebase } from "../../server";
 import logo from "../../logo.svg";
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
@@ -33,20 +30,7 @@ paper: {
       minHeight: 650,
       marginTop:8
     },
-    breadcrumbs:{
-      backgroundColor: "#fafafa",
-      marginTop:2,
-      padding: "5px",
-      color: "#fff"
-    },
-    icon:{
-    marginRight: 0.5,
-    width: 20,
-    height: 20,
-  },
-    link: {
-    display: "flex"
-  },
+   
      div:{
         marginBottom: 22,
         backgroundColor: "#0071bc",
@@ -230,13 +214,7 @@ class Noticias extends Component {
       <Container style={style.cardGrid}>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
-            <Breadcrumbs aria-label="breadcrumbs">
-            <Link color="textSecondary" style={style.link} href="/" >
-                                    <HomeIcon style={style.icon} />
-                                     Municipalidad de Buena Vista / 
-                                </Link>
-              
-            </Breadcrumbs>
+
           </Grid>
       </Paper>
         <Paper style={style.paper}>

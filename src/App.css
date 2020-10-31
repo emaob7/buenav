@@ -1,5 +1,9 @@
 
 .App-header {
   background-color: #fafafa;
+  background-image: url("../src/componentes/Imagenes/fondos/azul.svg");
+  background-size:cover;
+  background-position:top;
+  background: cover;
 
 }
