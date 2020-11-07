@@ -82,7 +82,7 @@ class Login extends Component {
         this.setState({ loading: true });
         setTimeout(() => {
             this.setState({ loading: false });
-          }, 8000);
+          }, 15000);
 //
         const  [{sesion}, dispatch] = this.context;
         const {firebase, usuario} = this.state;

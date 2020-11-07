@@ -17,13 +17,13 @@ import BotonTransparencia from "./botones/BotonTransparencia";
 import BotonCiudad from "./botones/BotonCiudad";
 import BotonServicios from "./botones/BotonServicios";
 import Tooltip from '@material-ui/core/Tooltip';
-import membreteIn from  "../../Imagenes/membrete/membreteIn.png";
+import boton from  "../../Imagenes/membrete/boton.png";
 import Grid from "@material-ui/core/Grid";
 
 const style={
   foto: {
-    width: "50%",
-    height: "50%",
+    width: "30%",
+    height: "30%",
   },
 }
 
@@ -160,14 +160,15 @@ class BarSesionSimple extends Component {
             <i className="material-icons">menu</i>
           </IconButton>
           </Tooltip>
-          <Tooltip title="Ir a inicio">
+          
           <Grid item xs={12} sm={5} md={5}>
           <Link  to="/">
-           
-            <img  src ={membreteIn} style={style.foto} />
+          <Tooltip title="Ir a inicio">
+            <img  src ={boton} style={style.foto} />
+            </Tooltip>
            </Link>
             </Grid>
-        </Tooltip>
+        
         <div className={classes.grow}></div>
 {/**Agregar una imagen cuanse pueda del logo */}
           <div className={classes.sectionDesktop}>

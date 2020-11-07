@@ -74,7 +74,7 @@ function App(props) {
   return autenticacionIniciada !== false ? (
     
    <React.Fragment >
-      <div  className="App-header">
+      
       <Snackbar>
         anchorOrigin = {{ vertical: "bottom", horizontal: "center" }}
         open ={openSnackbar ? openSnackbar.open : false}
@@ -110,6 +110,7 @@ function App(props) {
           
           <AppNavBarSimple />
           <AppNavBar />
+          <div  className="App-header">
          <Scroll showBelow={250}/>
 
           
@@ -323,12 +324,13 @@ function App(props) {
               <Route path="/auth/LoginTelefono" exact component={LoginTelefono}></Route>
             </Switch>
           </Grid>
-         
+          <Footer/>
+          </div>
         </MuiThemeProvider>
       </Router>
 
-      <Footer/>
-      </div>
+      
+      
     </React.Fragment>
     
   ) : null;

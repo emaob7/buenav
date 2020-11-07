@@ -6,7 +6,7 @@ import Link from '@material-ui/core/Link';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import PhoneIcon from '@material-ui/icons/Phone';
-import { Grid } from '@material-ui/core';
+import { Divider, Grid } from '@material-ui/core';
 import LanguageIcon from '@material-ui/icons/Language';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -23,6 +23,12 @@ const style = {
     link: {
     display: "flex"
   },
+  container:{
+    marginTop: 20
+  },
+  divider:{
+    marginTop: 27
+  }
 
 
   
@@ -50,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '30vh',
+    marginTop: 50
   },
   main: {
     marginTop: theme.spacing(8),
@@ -70,22 +77,7 @@ export default function StickyFooter() {
     <div className={classes.root}>
        <footer className={classes.footer}>
  <Grid container spacing={2}>
-     <Grid item xs={12} sm={5} md={5}>
-                
-      <Typography style={style.link}  variant="body1">
-                                    <LanguageIcon style={style.icon} />
-                                    Página Web Oficial del Gobierno Municipal de Buena Vista
-
-                                </Typography>
-                                <Typography style={style.link}  variant="caption">
-                                    
-                                    Página Oficial del Gobierno Municipal de Buena Vista
-Publicación de actividades oficiales, culturales, deportivos y sociales promovidas por la Municipalidad de Buena Vista. 
-
-                                </Typography>
-                             
-
-      </Grid>
+     
       <Grid item xs={12} sm={4} md={4}>
                 
      
@@ -109,7 +101,7 @@ Publicación de actividades oficiales, culturales, deportivos y sociales promovi
                              
 
       </Grid>
-      <Grid item xs={12} sm={3} md={3}>
+      <Grid item xs={12} sm={4} md={4}>
       <Typography style={style.link}  variant="body1">
         Redes Sociales
         </Typography>
@@ -129,10 +121,26 @@ Publicación de actividades oficiales, culturales, deportivos y sociales promovi
                              
 
       </Grid>
-      </Grid>
+      <Grid item xs={12} sm={4} md={4}>
+                
+      <Typography style={style.link}  variant="body1">
+                                    <LanguageIcon style={style.icon} />
+                                    Página Web Oficial del Gobierno Municipal de Buena Vista
 
-        <Container maxWidth="sm">
-          <Typography variant="body1">Esta webApp fue desarrollado por EmmanuelCompany</Typography>
+                                </Typography>
+                                <Typography style={style.link}  variant="caption">
+                                    
+                                    Página Oficial del Gobierno Municipal de Buena Vista
+Publicación de actividades oficiales, culturales, deportivos y sociales promovidas por la Municipalidad de Buena Vista. 
+
+                                </Typography>
+                             
+
+      </Grid>
+      </Grid>
+      <Divider style={style.divider}/>
+        <Container maxWidth="sm" style={style.container}>
+          <Typography variant="body1">Desarrollado por Tesaka</Typography>
           <Copyright />
         </Container>
       </footer>
