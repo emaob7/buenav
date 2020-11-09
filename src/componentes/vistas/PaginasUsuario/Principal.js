@@ -10,9 +10,7 @@ import {
   CardContent,
   CardActions,
   ButtonGroup,
-  Tooltip,
-  Chip,
-  Hidden
+  Tooltip
 } from "@material-ui/core";
 import { consumerFirebase } from "../../../server";
 import logo from "../../../logo.svg";
@@ -23,8 +21,8 @@ import CustomSlider from "../CustomSlider";
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
-import PhoneIcon from '@material-ui/icons/Phone';
-import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
+import Contacto from "./Contacto";
+
 
 
 
@@ -53,6 +51,12 @@ paper: {
       backgroundColor: "#f5f5f5",
       padding: "20px",
       minHeight: 650,
+      marginTop:8
+    },
+    paper2: {
+      backgroundColor: "#fff",
+      padding: "20px",
+      minHeight: 500,
       marginTop:8
     },
     breadcrumbs:{
@@ -97,9 +101,19 @@ paper: {
   chips: {
     margin: "3px",
     padding: "3%",
-    marginBottom: "16px",
+    marginBottom: "10px",
+    marginTop: "26px"
   
   },
+  foto: {
+    width: "100%",
+    height: "100%",
+    marginTop: "56px",
+    marginLeft: "16px",
+  },
+  div:{
+    marginTop:50
+  }
   
 };
 
@@ -263,11 +277,9 @@ class Principal extends Component {
               <CustomSlider/>
               </div> 
           </Grid>
-          
-          <Hidden mdUp>
-          <Chip style={style.chips}  icon={<PhoneIcon />} label="Llamanos (Linea alta)" component="a" href="tel:0213382413" clickable />
-          <Chip style={style.chips}  icon={<AlternateEmailIcon />} label="Envianos un email" component="a" href="mailto:munibuena@gmail.com" clickable />
-          </Hidden>
+
+         
+
 
       
         <Paper style={style.paper} >
@@ -356,6 +368,13 @@ class Principal extends Component {
           </Grid>
 
         </Paper>
+       
+       
+        <Grid >
+        <div style={style.div}>
+          <Contacto/>    
+              </div> 
+          </Grid>
       </Container>
     );
   }
