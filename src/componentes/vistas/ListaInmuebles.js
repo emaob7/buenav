@@ -5,7 +5,6 @@ import {
   Paper,
   Grid,
   Breadcrumbs,
-  Link,
   Typography,
   TextField,
   CardMedia,
@@ -20,6 +19,7 @@ import logo from "../../logo.svg";
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 import { obtenerData, obtenerDataAnterior } from "../../sesion/actions/InmuebleAction";
+import { Link } from "react-router-dom";
 
 
 

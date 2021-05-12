@@ -16,7 +16,9 @@ import { consumerFirebase } from "../../server";
 import logo from "../../logo.svg";
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
+import AddIcon from "@material-ui/icons/Add";
 import { obtenerData, obtenerDataAnterior } from "../../sesion/actions/InmuebleAction";
+import { Link } from "react-router-dom";
 
 
 const style = {
@@ -220,9 +222,23 @@ class Noticias extends Component {
         <Paper style={style.paper}>
 
                  <Typography  variant="h4"  color="textSecondary">
-          Obras y Actividades - (EDITAR / ELIMINAR)
+          Obras y Actividades
         </Typography>
         <div style={style.div} ></div>
+
+        <Grid item xs={12} sm={12} md={12}>
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<AddIcon />}
+              component={Link}
+              button
+              to="/inmueble/nuevo"
+            >
+              Nuevo
+            </Button>
+          </Grid>
+
           <Grid item xs={12} sm={4} style={style.gridTextfield}>
             <TextField
               fullWidth

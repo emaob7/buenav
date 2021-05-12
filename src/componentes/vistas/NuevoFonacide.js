@@ -22,18 +22,11 @@ import { openMensajePantalla } from "../../sesion/actions/snackbarAction";
 import ImageUploader from "react-images-upload";
 import {v4 as uuidv4} from "uuid";
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Papel from "../children/Papel";
 
 const style = {
   container: {
     paddingTop: "8px"
-  },
-  paper: {
-    marginTop: 8,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "40px",
-    backgroundColor: "#fafafa"
   },
   breadcrumbs:{
     backgroundColor: "#fafafa",
@@ -177,10 +170,10 @@ class NuevoFonacide extends Component {
             </Breadcrumbs>
           </Grid>
       </Paper>
-        <Paper style={style.paper}>
+        <Papel>
           <Grid container spacing={3}>
           <Typography  variant="h4"  color="textSecondary">
-          NUEVO DOCUMENTO FONACIDE
+          NUEVO FONACIDE
         </Typography>
        
         
@@ -239,7 +232,8 @@ class NuevoFonacide extends Component {
               <TextField
                 name="nombre"
                 label="Nombre de documento"
-                variant="outlined"                              
+                variant="outlined"
+                size="small"                              
                  multiline
                 rows={1}
                 fullWidth
@@ -256,6 +250,7 @@ class NuevoFonacide extends Component {
                 name="mes"
                 label="Mes"
                 variant="outlined"
+                size="small"
                 fullWidth
                 onChange={this.entraDatoEnEstado}
                 value={this.state.fonacide.mes}
@@ -270,6 +265,7 @@ class NuevoFonacide extends Component {
                 name="ano"
                 label="Año"
                 variant="outlined"
+                size="small"
                 fullWidth
                 onChange={this.entraDatoEnEstado}
                 value={this.state.fonacide.ano}
@@ -291,7 +287,6 @@ class NuevoFonacide extends Component {
                 type="button"
                 fullWidth
                 variant="contained"
-                size="large"
                 color="primary"
                 startIcon={<SaveIcon />}
                 style={style.submit}
@@ -300,11 +295,11 @@ class NuevoFonacide extends Component {
                 Guardar y Publicar
               </Button>
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-                        <Button  variant="contained" href="/" color="secondary" fullWidth style={style.submit} size="large">Cancelar</Button>
+            <Grid item xs={12} sm={6} md={6}>
+                        <Button  variant="contained" href="/" color="secondary" fullWidth style={style.submit} >Cancelar</Button>
                         </Grid>
           </Grid>
-        </Paper>
+          </Papel>
       </Container>
     );
   }

@@ -28,14 +28,6 @@ const style = {
   container: {
     paddingTop: "8px",
   },
-  paper: {
-    marginTop: 8,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "40px",
-    backgroundColor: "#fafafa",
-  },
   breadcrumbs: {
     backgroundColor: "#fafafa",
     marginTop: 2,
