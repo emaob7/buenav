@@ -5,15 +5,20 @@ import {
   Paper,
   Grid,
   Breadcrumbs,
-  Link,
   Typography,
   Card,
-  CardContent
+  CardContent,
+  FormControl,
+  InputLabel,
+  FormHelperText,
+  NativeSelect,
 } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
+import AddIcon from "@material-ui/icons/Add";
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import { consumerFirebase } from "../../server";
+import { Link } from "react-router-dom";
 
 
 
@@ -80,16 +85,53 @@ paper: {
 class EliminarRoyaltiU extends Component {
   state = {
     royaltis: [],
+    age:"2020"
    
 
   };
 
   
+  cambiarBusquedaTexto = e => {
+    const self = this;
+    self.setState({
+      [e.target.name]: e.target.value
+    });
+
+    if (self.state.typingTimeout) {
+      clearTimeout(self.state.typingTimeout);
+    }
+
+    self.setState({
+      name: e.target.value,
+      typing: false,
+      typingTimeout: setTimeout(goTime => {
+          let objectQuery = this.props.firebase.db
+          .collection("Royaltis")
+          .orderBy("mes")
+          .where("ano","==", self.state.age);
+
+          objectQuery.get().then(snapshot =>{
+            const arrayRoyaltis = snapshot.docs.map(doc=>{
+              let data = doc.data();
+              let id = doc.id;
+              return {id, ...data}
+            })
+            this.setState({
+              royaltis: arrayRoyaltis
+            })
+          })
+        
+      
+      
+      }, 500)
+    });
+  };
+
 
     
    
   async componentDidMount() {
-    let objectQuery = this.props.firebase.db.collection("Royaltis");
+    let objectQuery = this.props.firebase.db.collection("Royaltis").where("ano", "==", this.state.age);
     const snapshot = await objectQuery.get();
     const arrayRoyaltis = snapshot.docs.map(doc => {
         let data = doc.data();
@@ -146,6 +188,42 @@ class EliminarRoyaltiU extends Component {
           ROYALTIS - (ELIMINAR)
         </Typography>
         <div style={style.div} ></div>
+
+        
+        <Grid item xs={6} sm={6} md={2}>
+            <Typography>Documentos del año</Typography>
+            <FormControl>
+              <InputLabel>Año</InputLabel>
+              <NativeSelect
+                name="age"
+                onChange={this.cambiarBusquedaTexto}
+                value={this.state.age}
+              >
+                <option value="">Elije el Año</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </NativeSelect>
+              <FormHelperText>Seleccione el año</FormHelperText>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={12}>
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<AddIcon />}
+              component={Link}
+              button
+              to="/royalti/nuevo"
+            >
+              Nuevo
+            </Button>
+          </Grid>
+
 
           <Grid item xs={12} sm={12} style={style.gridTextfield}>
             <Grid container spacing={2}>

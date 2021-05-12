@@ -29,8 +29,9 @@ export default function ListaTramites() {
    
    <Chip   icon={<ContactMailIcon />} label="Registro de conducir" component={Link} button to="/licencia" clickable />
       <Chip   icon={<PaymentIcon />} label="Habilitacion vehicular" component={Link} button to="/habilitacion" clickable />
-      <Chip   icon={<PaymentIcon />} label="Habilitacion Motocicletas" component={Link} button to="/motocicleta" clickable />
       <Chip   icon={<CommuteIcon />} label="Autoescuela" component={Link} button to="/autoescuela" clickable />
+      <Chip   icon={<PaymentIcon />} label="Patente Comercial" component={Link} button to="/patente" clickable />
+
       
      
     </div>

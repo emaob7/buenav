@@ -8,10 +8,12 @@ import {
   Breadcrumbs,
   Link,
   Typography,
- 
   Card,
   CardContent,
-
+  FormControl,
+  InputLabel,
+  FormHelperText,
+  NativeSelect,
 } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -84,8 +86,46 @@ paper: {
 class Royalties extends Component {
   state = {
     royaltis: [],
+    age:"2020"
    
 
+  };
+
+
+  cambiarBusquedaTexto = e => {
+    const self = this;
+    self.setState({
+      [e.target.name]: e.target.value
+    });
+
+    if (self.state.typingTimeout) {
+      clearTimeout(self.state.typingTimeout);
+    }
+
+    self.setState({
+      name: e.target.value,
+      typing: false,
+      typingTimeout: setTimeout(goTime => {
+          let objectQuery = this.props.firebase.db
+          .collection("Royaltis")
+          .orderBy("mes")
+          .where("ano","==", self.state.age);
+
+          objectQuery.get().then(snapshot =>{
+            const arrayRoyaltis = snapshot.docs.map(doc=>{
+              let data = doc.data();
+              let id = doc.id;
+              return {id, ...data}
+            })
+            this.setState({
+              royaltis: arrayRoyaltis
+            })
+          })
+        
+      
+      
+      }, 500)
+    });
   };
 
   
@@ -93,7 +133,7 @@ class Royalties extends Component {
     
    
   async componentDidMount() {
-    let objectQuery = this.props.firebase.db.collection("Royaltis");
+    let objectQuery = this.props.firebase.db.collection("Royaltis").where("ano", "==", this.state.age);
     const snapshot = await objectQuery.get();
     const arrayRoyaltis = snapshot.docs.map(doc => {
         let data = doc.data();
@@ -134,10 +174,35 @@ class Royalties extends Component {
         </Typography>
         <div style={style.div} ></div>
 
+
+        
+        <Grid item xs={6} sm={6} md={2}>
+            <Typography>Documentos del año</Typography>
+            <FormControl>
+              <InputLabel>Año</InputLabel>
+              <NativeSelect
+                name="age"
+                onChange={this.cambiarBusquedaTexto}
+                value={this.state.age}
+              >
+                <option value="">Elije el Año</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </NativeSelect>
+              <FormHelperText>Seleccione el año</FormHelperText>
+            </FormControl>
+          </Grid>
+
+
+
           <Grid item xs={12} sm={12} style={style.gridTextfield}>
             <Grid container spacing={2}>
               {this.state.royaltis.map(card => (
-                <Grid item key={card.id} xs={12} sm={6} md={8}>
+                <Grid item key={card.id} xs={12} sm={12} md={12}>
                   <Card style={style.card}>
                     <CardContent style={style.cardContent}>
                       <Typography gutterBottom variant="h6" component="h2">

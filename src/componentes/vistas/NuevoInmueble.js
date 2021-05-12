@@ -20,7 +20,6 @@ import { consumerFirebase } from "../../server";
 import { openMensajePantalla } from "../../sesion/actions/snackbarAction";
 import ImageUploader from "react-images-upload";
 import {v4 as uuidv4} from "uuid";
-import { crearKeyword } from "../../sesion/actions/Keyword";
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 const style = {
@@ -129,13 +128,10 @@ class NuevoInmueble extends Component {
         .toLowerCase();
     });
 
-    const textoBusqueda =
-      inmueble.direccion + " " + inmueble.ciudad + " " + inmueble.pais;
-    let keywords = crearKeyword(textoBusqueda);
+
 
     this.props.firebase.guardarDocumentos(archivos).then(arregloUrls => {
       inmueble.fotos = arregloUrls;
-      inmueble.keywords = keywords;
       inmueble.propietario = this.props.firebase.auth.currentUser.uid;
 
       this.props.firebase.db

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import ListaTramites from "../../../Layout/Bar/listas/ListaTramites";
-export default class Motocicleta extends Component {
+export default class Patente extends Component {
     render() {
         return (
             <div>
                 <ListaTramites/>
-                motocicleta
+                Patente
             </div>
         )
     }

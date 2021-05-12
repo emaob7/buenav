@@ -35,6 +35,10 @@ const style={
   tipografia:{
     marginTop:20
   },
+  tipografia1:{
+    marginTop:20,
+    color: '#fff'
+  },
   breadcrumbs:{
     backgroundColor: "#fafafa",
     marginTop:2,
@@ -133,7 +137,7 @@ export default function Licencia() {
           </Paper>
           </Grid>
           </Grid>
-          <Typography  variant="h5"  color="textSecondary" style={style.tipografia}>
+          <Typography  variant="h5"   style={style.tipografia1}>
          Aquí podrá ver más detalles <ExpandMoreIcon/>
         </Typography>
         <Paper style={style.paper} >

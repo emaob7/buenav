@@ -78,17 +78,18 @@ export default function BotonTransparencia() {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList  autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
  {/*agregar botones o menus*/}
-                    <MenuItem component={Link} button to="/anexopersonal" onClick={handleClose}>Anexo Personal</MenuItem>
+                    <MenuItem component={Link} button to="/anexopersonal" onClick={handleClose}>Nomina de funcionarios</MenuItem>
                     <MenuItem component={Link} button to="/royalties" onClick={handleClose}>Royalties</MenuItem>
                     <MenuItem component={Link} button to="/fonacide" onClick={handleClose}>Fonacide</MenuItem>
                     <MenuItem component={Link} button to="/inventario" onClick={handleClose}>Inventario</MenuItem>
+                    {/* 
                     <MenuItem component={Link} button to="/presupuestos" onClick={handleClose}>Presupuestos</MenuItem>
 
                     <MenuItem component={Link} button to="" onClick={handleClose}>Proveedores</MenuItem>
                     <MenuItem component={Link} button to="/contrataciones" onClick={handleClose}>Contrataciones Publicas</MenuItem>
                     <MenuItem component={Link} button to="/cheques" onClick={handleClose}>Cheques Emitidas</MenuItem>
                     <MenuItem component={Link} button to="/aportes" onClick={handleClose}>Aportes a Entidades</MenuItem>
-{/*agregar botones o menus*/}
+*agregar botones o menus*/}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

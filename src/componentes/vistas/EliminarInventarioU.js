@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import ListaTransparencia from "../../../Layout/Bar/listas/ListaTransparencia";
 import {
   Container,
   Paper,
   Grid,
   Breadcrumbs,
-  Link,
   Typography,
   Card,
   CardContent,
@@ -17,8 +15,10 @@ import {
 } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import AddIcon from "@material-ui/icons/Add";
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import { consumerFirebase } from "../../../../server";
+import { consumerFirebase } from "../../server";
+import { Link } from "react-router-dom";
 
 
 
@@ -82,13 +82,14 @@ paper: {
   
 };
 
-class Inventario extends Component {
+class EliminarInventarioU extends Component {
   state = {
     inventarios: [],
     age:"2020"
 
   };
 
+  
   cambiarBusquedaTexto = e => {
     const self = this;
     self.setState({
@@ -124,7 +125,6 @@ class Inventario extends Component {
       }, 500)
     });
   };
-  
 
     
    
@@ -142,13 +142,29 @@ class Inventario extends Component {
 }
 
 
- 
+  eliminarInventario = id => {
+    this.props.firebase.db
+      .collection("Inventarios")
+      .doc(id)
+      .delete()
+      .then(success => {
+        this.eliminarInventarioDeListaEstado(id);
+      });
+  };
+
+  eliminarInventarioDeListaEstado = id => {
+    const inventarioListaNueva = this.state.inventarios.filter(
+      inventario => inventario.id !== id
+    );
+    this.setState({
+      inventarios: inventarioListaNueva
+    });
+  };
 
 
   render() {
     return (
       <Container style={style.cardGrid}>
-        <ListaTransparencia/>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">
@@ -167,11 +183,11 @@ class Inventario extends Component {
         <Paper style={style.paper}>
 
                  <Typography  variant="h4"  color="textSecondary">
-          INVENTARIO - TESAKÃ
+          INVENTARIO
         </Typography>
         <div style={style.div} ></div>
 
-        
+                
         <Grid item xs={6} sm={6} md={2}>
             <Typography>Documentos del año</Typography>
             <FormControl>
@@ -195,6 +211,19 @@ class Inventario extends Component {
 
 
 
+        <Grid item xs={12} sm={12} md={12}>
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<AddIcon />}
+              component={Link}
+              button
+              to="/inventario/nuevo"
+            >
+              Nuevo
+            </Button>
+          </Grid>
+
           <Grid item xs={12} sm={12} style={style.gridTextfield}>
             <Grid container spacing={2}>
               {this.state.inventarios.map(card => (
@@ -206,7 +235,9 @@ class Inventario extends Component {
                       <Button style={style.botones} to="chart" target="_blank" size="small" variant="contained" color="primary" href={(card.fotos)}  startIcon={<PictureAsPdfIcon/>} >
                         Ver documento
                       </Button>
-                     
+                      <Button  variant="contained" size="small" color="secondary" onClick={() => this.eliminarInventario(card.id)}>
+                        Eliminar
+                      </Button>
                       
                       </Typography>
                       </CardContent>
@@ -221,4 +252,4 @@ class Inventario extends Component {
   }
 }
 
-export default consumerFirebase(Inventario);
+export default consumerFirebase(EliminarInventarioU);

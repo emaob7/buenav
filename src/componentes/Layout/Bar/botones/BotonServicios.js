@@ -80,11 +80,12 @@ export default function BotonServicios() {
  {/*agregar botones o menus*/}
                     <MenuItem component={Link} button to="/licencia" onClick={handleClose}>Registro de Conducir</MenuItem>
                     <MenuItem component={Link} button to="/habilitacion" onClick={handleClose}>Habilitacion Vehicular</MenuItem>
-                    <MenuItem component={Link} button to="/motocicleta" onClick={handleClose}>Habilitacion Motocicletas</MenuItem>
                     <MenuItem component={Link} button to="/autoescuela" onClick={handleClose}>Autoescuela</MenuItem>
+                    <MenuItem component={Link} button to="/patente" onClick={handleClose}>Patente Comercial</MenuItem>
 {/*agregar botones o menus*/}
                   </MenuList>
                 </ClickAwayListener>
+                
               </Paper>
             </Grow>
           )}

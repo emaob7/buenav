@@ -21,7 +21,6 @@ import { consumerFirebase } from "../../server";
 import { openMensajePantalla } from "../../sesion/actions/snackbarAction";
 import ImageUploader from "react-images-upload";
 import {v4 as uuidv4} from "uuid";
-import { crearKeyword } from "../../sesion/actions/Keyword";
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 const style = {
@@ -134,13 +133,10 @@ class NuevoRoyalti extends Component {
         .toLowerCase();
     });
 
-    const textoBusqueda =
-    royalti.mes + " " + royalti.nombre + " " + royalti.ano;
-    let keywords = crearKeyword(textoBusqueda);
+
 
     this.props.firebase.guardarDocumentos(archivos).then(arregloUrls => {
     royalti.fotos = arregloUrls;
-      royalti.keywords = keywords;
       royalti.propietario = this.props.firebase.auth.currentUser.uid;
 
       this.props.firebase.db
@@ -192,7 +188,7 @@ class NuevoRoyalti extends Component {
         <Paper style={style.paper}>
           <Grid container spacing={3}>
           <Typography  variant="h4"  color="textSecondary">
-          AGREGAR NUEVO DOC. ROYALTIES
+          NUEVO ROYALTIS
         </Typography>
        
         

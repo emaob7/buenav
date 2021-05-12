@@ -19,6 +19,7 @@ import NuevoInmueble from "./componentes/vistas/NuevoInmueble";
 import Intendente from "./componentes/vistas/PaginasUsuario/Institucion/Intendente";
 import NuevoAnexo from "./componentes/vistas/NuevoAnexo";
 import NuevoFonacide from "./componentes/vistas/NuevoFonacide";
+import NuevoInventario from "./componentes/vistas/NuevoInventario";
 import NuevoRoyalti from "./componentes/vistas/NuevoRoyalti";
 import EditarInmueble from "./componentes/vistas/EditarInmueble";
 import VerMasNoticias from "./componentes/vistas/VerMasNoticias";
@@ -26,6 +27,7 @@ import Noticias from "./componentes/vistas/Noticias";
 import EliminarAnexoU from "./componentes/vistas/EliminarAnexoU";
 import EliminarFonacideU from "./componentes/vistas/EliminarFonacideU";
 import EliminarRoyaltiU from "./componentes/vistas/EliminarRoyaltiU";
+import EliminarInvetarioU from "./componentes/vistas/EliminarInventarioU";
 import LoginTelefono from "./componentes/Seguridad/LoginTelefono";
 import NoticiasSimple from "./componentes/vistas//PaginasUsuario/NoticiasSimple";
 import MarcoLegal from "./componentes/vistas/PaginasUsuario/Institucion/MarcoLegal";
@@ -41,7 +43,7 @@ import ResolucionesJunta from "./componentes/vistas/PaginasUsuario/Junta/Resoluc
 import Autoescuela from "./componentes/vistas/PaginasUsuario/Tramites/Autoescuela";
 import Habilitacion from "./componentes/vistas/PaginasUsuario/Tramites/Habilitacion";
 import Licencia from "./componentes/vistas/PaginasUsuario/Tramites/Licencia";
-import Motocicleta from "./componentes/vistas/PaginasUsuario/Tramites/Motocicleta";
+import Patente from "./componentes/vistas/PaginasUsuario/Tramites/Patente";
 import AnexoPersonal from "./componentes/vistas/PaginasUsuario/Transparencia/AnexoPersonal";
 import Aportes from "./componentes/vistas/PaginasUsuario/Transparencia/Aportes";
 import Inventario from "./componentes/vistas/PaginasUsuario/Transparencia/Inventario";
@@ -52,6 +54,7 @@ import Royalties from "./componentes/vistas/PaginasUsuario/Transparencia/Royalti
 import Presupuestos from "./componentes/vistas/PaginasUsuario/Transparencia/Presupuestos";
 import Principal from "./componentes/vistas/PaginasUsuario/Principal";
 import Scroll from "./componentes/Layout/Scroll";
+import EliminarInventarioU from "./componentes/vistas/EliminarInventarioU";
 
 
 
@@ -131,7 +134,12 @@ function App(props) {
                 autenticadoFirebase="{firebase.auth.currentUser}"
                 component={NuevoInmueble}
               />
-
+              <RutaAutenticada
+                exact
+                path="/inventario/nuevo"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={NuevoInventario}
+              />
               <RutaAutenticada
                 exact
                 path="/anexo/nuevo"
@@ -161,6 +169,12 @@ function App(props) {
                 path="/anexo/eliminar"
                 autenticadoFirebase="{firebase.auth.currentUser}"
                 component={EliminarAnexoU}
+              />
+              <RutaAutenticada
+                exact
+                path="/inventario/eliminar"
+                autenticadoFirebase="{firebase.auth.currentUser}"
+                component={EliminarInventarioU}
               />
               <RutaAutenticada
                 exact
@@ -277,8 +291,8 @@ function App(props) {
               ></Route>
               <Route
               exact
-              path="/motocicleta"
-              component={Motocicleta}
+              path="/patente"
+              component={Patente}
               ></Route>
               <Route
               exact
