@@ -75,9 +75,9 @@ const style = {
   },
 };
 
-class NuevoFonacide extends Component {
+class NuevoInventario extends Component {
   state = {
-    fonacide: {
+    inventario: {
       mes: "",
       nombre: "",
       ano: "",
@@ -90,10 +90,10 @@ class NuevoFonacide extends Component {
   };
 
   entraDatoEnEstado = e => {
-    let fonacide_ = Object.assign({}, this.state.fonacide);
-    fonacide_[e.target.name] = e.target.value;
+    let inventario_ = Object.assign({}, this.state.inventario);
+    inventario_[e.target.name] = e.target.value;
     this.setState({
-        fonacide: fonacide_
+        inventario: inventario_
     });
   };
 
@@ -107,8 +107,8 @@ class NuevoFonacide extends Component {
     });
   };
 
-  guardarFonacide = () => {
-    const { archivos, fonacide } = this.state;
+  guardarInventario = () => {
+    const { archivos, inventario } = this.state;
     this.setState({ loading: true });
     setTimeout(() => {
         this.setState({ loading: false });
@@ -132,19 +132,19 @@ class NuevoFonacide extends Component {
     });
 
     const textoBusqueda =
-    fonacide.mes + " " + fonacide.nombre + " " + fonacide.ano;
+    inventario.mes + " " + inventario.nombre + " " + inventario.ano;
     let keywords = crearKeyword(textoBusqueda);
 
     this.props.firebase.guardarDocumentos(archivos).then(arregloUrls => {
-        fonacide.fotos = arregloUrls;
-        fonacide.keywords = keywords;
-        fonacide.propietario = this.props.firebase.auth.currentUser.uid;
+        inventario.fotos = arregloUrls;
+        inventario.keywords = keywords;
+        inventario.propietario = this.props.firebase.auth.currentUser.uid;
 
       this.props.firebase.db
-        .collection("Fonacides")
-        .add(fonacide)
+        .collection("Inventarios")
+        .add(inventario)
         .then(success => {
-          this.props.history.push("/fonacide/eliminar");
+          this.props.history.push("/inventario/eliminar");
         })
         .catch(error => {
           openMensajePantalla({
@@ -184,7 +184,7 @@ class NuevoFonacide extends Component {
         <Paper style={style.paper}>
           <Grid container spacing={3}>
           <Typography  variant="h4"  color="textSecondary">
-          AGREGAR NUEVO DOCUMENTO FONACIDE
+          AGREGAR NUEVO DOCUMENTO INVENTARIO
         </Typography>
        
         
@@ -248,7 +248,7 @@ class NuevoFonacide extends Component {
                 rows={1}
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.fonacide.nombre}
+                value={this.state.inventario.nombre}
               />
               {loading && (
             <LinearProgress style={style.load} />
@@ -262,7 +262,7 @@ class NuevoFonacide extends Component {
                 variant="outlined"
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.fonacide.mes}
+                value={this.state.inventario.mes}
               />
               {loading && (
             <LinearProgress style={style.load} />
@@ -276,7 +276,7 @@ class NuevoFonacide extends Component {
                 variant="outlined"
                 fullWidth
                 onChange={this.entraDatoEnEstado}
-                value={this.state.fonacide.ano}
+                value={this.state.inventario.ano}
               />
               {loading && (
             <LinearProgress style={style.load} />
@@ -299,7 +299,7 @@ class NuevoFonacide extends Component {
                 color="primary"
                 startIcon={<SaveIcon />}
                 style={style.submit}
-                onClick={this.guardarFonacide}
+                onClick={this.guardarInventario}
               >
                 Guardar y Publicar
               </Button>
@@ -314,4 +314,4 @@ class NuevoFonacide extends Component {
   }
 }
 
-export default consumerFirebase(NuevoFonacide);
+export default consumerFirebase(NuevoInventario);

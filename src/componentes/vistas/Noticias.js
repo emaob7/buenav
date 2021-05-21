@@ -220,7 +220,7 @@ class Noticias extends Component {
         <Paper style={style.paper}>
 
                  <Typography  variant="h4"  color="textSecondary">
-          Obras y Actividades - (EDITAR / ELIMINAR)
+          Obras y Actividades Municipales - (EDITAR / ELIMINAR)
         </Typography>
         <div style={style.div} ></div>
           <Grid item xs={12} sm={4} style={style.gridTextfield}>

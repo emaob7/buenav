@@ -60,6 +60,9 @@ class EditarNoticias extends Component {
     paginaActual: 0
   };
 
+
+  
+
   cambiarBusquedaTexto = e => {
     const self = this;
     self.setState({

@@ -285,7 +285,7 @@ class Principal extends Component {
         <Paper style={style.paper} >
 
                  <Typography  variant="h4"  color="inherit" >
-          Obras y<br/>Actividades
+          Obras y<br/>Actividades Municipales
         </Typography>
         
           <Grid item xs={12} sm={4} style={style.gridTextfield}>

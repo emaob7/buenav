@@ -71,12 +71,7 @@ class AppNavBarSimple extends Component {
 
     return (
         <MuiThemeProvider theme= {theme}>
-          <Grid item xs={12} sm={5} md={5}>
-          <Link  to="/">
-           
-            <img  src ={membreteIn} style={style.foto} />
-           </Link>
-            </Grid>
+         
 
       <div>
           

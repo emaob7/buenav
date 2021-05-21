@@ -13,6 +13,8 @@ import { consumerFirebase } from "../../server";
 import { crearUsuario } from "../../sesion/actions/sesionAction";
 import { openMensajePantalla } from "../../sesion/actions/snackbarAction";
 import { StateContext } from "../../sesion/store";
+import Review from "../vistas/checkout/Review";
+//import Contador from "../vistas/Contador";
 
 const style = {
   paper: {
@@ -54,6 +56,7 @@ class RegistrarUsuario extends Component {
       password: "",
     },
   };
+  
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.firebase === prevState.firebase) {
@@ -71,8 +74,9 @@ class RegistrarUsuario extends Component {
     this.setState({
       usuario: usuario,
     });
+   
   };
-
+ 
   registrarUsuario = async (e) => {
     e.preventDefault();
     const [{ sesion }, dispatch] = this.context;
@@ -87,6 +91,7 @@ class RegistrarUsuario extends Component {
         mensaje: callback.mensaje.message,
       });
     }
+    
   };
 
   render() {
@@ -96,9 +101,11 @@ class RegistrarUsuario extends Component {
           <Avatar style={style.avatar}>
             <LockOutLineIcon />
           </Avatar>
+
           <Typography component="h1" variant="h5">
             Registre su Cuenta
           </Typography>
+      
           <form style={style.form}>
             <Grid container spacing={2}>
               <Grid item md={6} xs={12}>
@@ -110,6 +117,7 @@ class RegistrarUsuario extends Component {
                   label="Ingrese su nombre"
                   variant="outlined"
                 />
+                
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
@@ -120,6 +128,7 @@ class RegistrarUsuario extends Component {
                   label="Ingrese sus apellidos"
                   variant="outlined"
                 />
+                
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
@@ -160,6 +169,8 @@ class RegistrarUsuario extends Component {
             </Grid>
           </form>
         </div>
+        <Review atributomio ={this.state.usuario}/>
+     
       </Container>
     );
   }

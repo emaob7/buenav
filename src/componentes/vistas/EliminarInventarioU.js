@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import ListaTransparencia from "../../../Layout/Bar/listas/ListaTransparencia";
 import {
   Container,
   Paper,
@@ -14,7 +13,7 @@ import {
 import HomeIcon from "@material-ui/icons/Home";
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import { consumerFirebase } from "../../../../server";
+import { consumerFirebase } from "../../server";
 
 
 
@@ -78,7 +77,7 @@ paper: {
   
 };
 
-class Inventario extends Component {
+class EliminarInventarioU extends Component {
   state = {
     inventarios: [],
    
@@ -103,13 +102,29 @@ class Inventario extends Component {
 }
 
 
- 
+  eliminarInventario = id => {
+    this.props.firebase.db
+      .collection("Inventarios")
+      .doc(id)
+      .delete()
+      .then(success => {
+        this.eliminarInventarioDeListaEstado(id);
+      });
+  };
+
+  eliminarInventarioDeListaEstado = id => {
+    const inventarioListaNueva = this.state.inventarios.filter(
+      inventario => inventario.id !== id
+    );
+    this.setState({
+      inventarios: inventarioListaNueva
+    });
+  };
 
 
   render() {
     return (
       <Container style={style.cardGrid}>
-        <ListaTransparencia/>
       <Paper style={style.breadcrumbs}>
                 <Grid item xs={12} sm={12}>
             <Breadcrumbs aria-label="breadcrumbs">
@@ -128,7 +143,7 @@ class Inventario extends Component {
         <Paper style={style.paper}>
 
                  <Typography  variant="h4"  color="textSecondary">
-          INVENTARIO - TESAKÃ
+          INVENTARIO - (ELIMINAR)
         </Typography>
         <div style={style.div} ></div>
 
@@ -143,7 +158,9 @@ class Inventario extends Component {
                       <Button style={style.botones} to="chart" target="_blank" size="small" variant="contained" color="primary" href={(card.fotos)}  startIcon={<PictureAsPdfIcon/>} >
                         Ver documento
                       </Button>
-                     
+                      <Button  variant="contained" size="small" color="secondary" onClick={() => this.eliminarInventario(card.id)}>
+                        Eliminar
+                      </Button>
                       
                       </Typography>
                       </CardContent>
@@ -158,4 +175,4 @@ class Inventario extends Component {
   }
 }
 
-export default consumerFirebase(Inventario);
+export default consumerFirebase(EliminarInventarioU);

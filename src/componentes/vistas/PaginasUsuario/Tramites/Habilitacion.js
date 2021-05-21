@@ -32,8 +32,13 @@ const style={
     marginBottom:27
     
   },
+  tipografia1:{
+    marginTop:20,
+    color: '#fff'
+  },
   tipografia:{
-    marginTop:20
+    marginTop:20,
+    
   },
   breadcrumbs:{
     backgroundColor: "#fafafa",
@@ -124,8 +129,8 @@ export default function Habilitacion() {
           </Paper>
           </Grid>
           </Grid>
-          <Typography  variant="h5"  color="textSecondary" style={style.tipografia}>
-         Aquí podrá ver lista de costos Aproximados <ExpandMoreIcon/>
+          <Typography  variant="h5"   style={style.tipografia1}>
+         Aquí podrá ver lista de costos Aproximados<ExpandMoreIcon/>
         </Typography>
         <Paper style={style.paper} >
           

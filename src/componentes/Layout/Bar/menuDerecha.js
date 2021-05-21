@@ -68,6 +68,14 @@ export const MenuDerecha = ({
           primary="Agregar Royalti"
         />
       </ListItem>
+      <ListItem component={Link} button to="/inventario/nuevo">
+        <i className="material-icons">add_box</i>
+        <ListItemText
+          classes={{ primary: classes.listItemText }}
+          primary="Agregar Inventario"
+        />
+      </ListItem>
+      
       <Divider />
       <ListSubheader>EDITAR / ELIMINAR</ListSubheader>
       <ListItem component={Link} button to="/noticias/editar">
@@ -96,6 +104,13 @@ export const MenuDerecha = ({
         <ListItemText
           classes={{ primary: classes.listItemText }}
           primary="Eliminar Royalti"
+        />
+      </ListItem>
+      <ListItem component={Link} button to="/inventario/eliminar">
+        <i className="material-icons">delete</i>
+        <ListItemText
+          classes={{ primary: classes.listItemText }}
+          primary="Eliminar Inventario"
         />
       </ListItem>
     </List>

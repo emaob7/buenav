@@ -49,11 +49,7 @@ class EditarInmueble extends Component {
         }
     }
 
-    cambiarDato = e => {
-        let inmueble = Object.assign({}, this.state.inmueble);
-        inmueble[e.target.name] = e.target.value;
-        this.setState({inmueble});
-    }
+     
 
     subirImagenes = imagenes =>{
         const { inmueble } = this.state;

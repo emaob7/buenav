@@ -145,6 +145,8 @@ const PerfilUsuario = props => {
         <Typography component="h1" variant="h5">
           Perfil de Cuenta
         </Typography>
+
+        
         <form style={style.form}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
@@ -157,6 +159,8 @@ const PerfilUsuario = props => {
                 onChange={cambiarDato}
               />
             </Grid>
+
+
             <Grid item xs={12} md={6}>
               <TextField
                 name="apellido"
