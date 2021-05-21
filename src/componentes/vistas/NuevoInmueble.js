@@ -13,7 +13,6 @@ import {
   TableRow,
   TableCell,
 } from "@material-ui/core";
-import MuseumIcon from "@material-ui/icons/Museum";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import { consumerFirebase } from "../../server";
